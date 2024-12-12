@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dexj8n3wovydc"]
+
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="1_qbf3l"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="2_8j35l"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="3_vnldh"]
+
+[node name="Platform" type="StaticBody2D"]
+collision_mask = 48
+script = ExtResource("1_qbf3l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(432, 0, 432, 48, 672, 144, 672, 288, 432, 384, 432, 432, 672, 528, 672, 672, 528, 720, 912, 720, 912, -384, 432, -384, 432, -336, 672, -240, 672, -96)
+
+[node name="Texture" parent="." instance=ExtResource("2_8j35l")]
+position = Vector2(0, -360)
+polygon = PackedVector2Array(432, -24, 432, 24, 672, 120, 672, 264, 432, 360, 432, 408, 672, 504, 672, 648, 612, 672, 912, 672, 912, -24)
+
+[node name="Outline" parent="Texture" instance=ExtResource("3_vnldh")]
+points = PackedVector2Array(432, -24, 432, 24, 672, 120, 672, 264, 432, 360, 432, 408, 672, 504, 672, 648, 612, 672)
+
+[node name="Texture2" parent="." instance=ExtResource("2_8j35l")]
+position = Vector2(0, 312)
+polygon = PackedVector2Array(612, 0, 432, 72, 432, 120, 672, 216, 672, 360, 528, 408, 912, 408, 912, 0)
+
+[node name="Outline" parent="Texture2" instance=ExtResource("3_vnldh")]
+points = PackedVector2Array(672, -24, 432, 72, 432, 120, 672, 216, 672, 360, 528, 408)

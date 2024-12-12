@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=3 uid="uid://co5bnd6j4rkny"]
+
+[ext_resource type="Texture2D" uid="uid://d2elucvua8we" path="res://assets/backgrounds/bg-credits.png" id="1_ayty2"]
+[ext_resource type="PackedScene" uid="uid://d0rfojarbn7xn" path="res://objects/objects/obj_launcher.tscn" id="2_3t5b7"]
+[ext_resource type="Script" path="res://menus/animators/bg_scrolling_anim.gd" id="2_ycj4h"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="3_bj6og"]
+[ext_resource type="PackedScene" uid="uid://dd281h6vr0tvt" path="res://objects/world/semi_bg_a1.tscn" id="3_f4e3v"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="4_uk5fo"]
+[ext_resource type="Script" path="res://objects/scripts/flipper_rotation.gd" id="5_5p4ry"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="5_h2epl"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="6_c0qxn"]
+[ext_resource type="PackedScene" uid="uid://bc842wyjmfqj1" path="res://objects/objects/obj_rabbithole.tscn" id="6_cjt32"]
+[ext_resource type="Texture2D" uid="uid://ddgv8xfqbr1gr" path="res://assets/objects/flipper-regular-left.png" id="9_224e7"]
+[ext_resource type="Texture2D" uid="uid://bngnaahx8oyn2" path="res://assets/objects/flipper-regular-right.png" id="10_0gxf6"]
+[ext_resource type="Script" path="res://objects/scripts/flipper_movement.gd" id="10_r3p31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uto6a"]
+size = Vector2(106, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrfla"]
+
+[node name="Cabinet" type="Node2D"]
+
+[node name="ScrollBG" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.65, 1)
+z_index = -998
+texture = ExtResource("1_ayty2")
+centered = false
+script = ExtResource("2_ycj4h")
+
+[node name="BG2" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 0.65, 0.363)
+z_index = -998
+position = Vector2(-480, -480)
+texture = ExtResource("1_ayty2")
+centered = false
+
+[node name="SemiBG" parent="." instance=ExtResource("3_f4e3v")]
+polygon = PackedVector2Array(768, 144, 840, 144, 840, 576, 768, 576)
+
+[node name="Launcher" parent="." instance=ExtResource("2_3t5b7")]
+position = Vector2(784, 520)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 144, 0, 144, -720, 768, -720, 768, 0, 912, 0, 912, -768, 0, -768)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+script = ExtResource("3_bj6og")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(0, 0, 144, 0, 144, 528, 306, 576, 306, 768, 432, 912, 0, 912)
+
+[node name="Texture" parent="Platform" instance=ExtResource("5_h2epl")]
+polygon = PackedVector2Array(0, 0, 144, 0, 144, 528, 306, 576, 306, 720, 0, 720)
+
+[node name="Outline" parent="Platform/Texture" instance=ExtResource("6_c0qxn")]
+points = PackedVector2Array(144, 0, 144, 528, 306, 576, 306, 769, 432, 912)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+script = ExtResource("3_bj6og")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2"]
+polygon = PackedVector2Array(768, 0, 912, 0, 912, 912, 432, 912, 582, 768, 582, 576, 768, 528, 768, 576, 840, 576, 840, 288, 768, 144)
+
+[node name="Texture" parent="Platform2" instance=ExtResource("5_h2epl")]
+polygon = PackedVector2Array(768, 0, 912, 0, 912, 720, 582, 720, 582, 576, 768, 528, 768, 576, 840, 576, 840, 288, 768, 144)
+
+[node name="Outline" parent="Platform2/Texture" instance=ExtResource("6_c0qxn")]
+points = PackedVector2Array(432, 912, 582, 768, 582, 576, 768, 528, 768, 576, 840, 576, 840, 288, 768, 144, 768, 0)
+
+[node name="RB" parent="." instance=ExtResource("4_uk5fo")]
+position = Vector2(192, 432)
+
+[node name="FlipperRotator" type="AnimatableBody2D" parent="."]
+position = Vector2(313, 588)
+rotation = 0.261799
+script = ExtResource("5_5p4ry")
+is_rotator = 2
+rotate_degrees_to = -60.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperRotator"]
+position = Vector2(43, 0)
+shape = SubResource("RectangleShape2D_uto6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlipperRotator"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_224e7")
+offset = Vector2(84, 0)
+
+[node name="FlipperRotator2" type="AnimatableBody2D" parent="."]
+position = Vector2(574, 588)
+rotation = -0.261799
+script = ExtResource("5_5p4ry")
+is_rotator = 2
+rotate_degrees_to = 60.0
+is_flipper = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperRotator2"]
+position = Vector2(-43, 0)
+shape = SubResource("RectangleShape2D_uto6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlipperRotator2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_0gxf6")
+offset = Vector2(-84, 0)
+
+[node name="Rabbithole" parent="." node_paths=PackedStringArray("teleport_to") instance=ExtResource("6_cjt32")]
+position = Vector2(432, 864)
+going = 0
+teleport_to = NodePath("../Rabbithole2")
+force_send = true
+
+[node name="Rabbithole2" parent="." instance=ExtResource("6_cjt32")]
+z_index = -2
+position = Vector2(808, 456)
+going = 1
+
+[node name="FlipperMover" type="AnimatableBody2D" parent="."]
+position = Vector2(48, 48)
+script = ExtResource("10_r3p31")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperMover"]
+shape = SubResource("RectangleShape2D_jrfla")
+
+[node name="FlipperMover2" type="AnimatableBody2D" parent="."]
+position = Vector2(48, 120)
+script = ExtResource("10_r3p31")
+is_flipper = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperMover2"]
+shape = SubResource("RectangleShape2D_jrfla")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://tsvw2hxpa7df"]
+
+[ext_resource type="Script" path="res://menus/runtime/playground/code/visible_on_screen_notifier_2d.gd" id="1_1kti2"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="1_rnk73"]
+[ext_resource type="PackedScene" uid="uid://c3smd13tjiltq" path="res://objects/game/cabinet_trans_cam.tscn" id="1_vigd2"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="2_p7wib"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/generic_player.gd" id="2_r66u3"]
+[ext_resource type="Texture2D" uid="uid://6geiny7chbe" path="res://assets/interface/rabbitstar-03.png" id="3_47enx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oubkg"]
+radius = 48.0
+
+[node name="TA" type="Node2D"]
+
+[node name="CabinetTransCam" parent="." node_paths=PackedStringArray("rabbitball") instance=ExtResource("1_vigd2")]
+rabbitball = NodePath("../Rabbitball")
+
+[node name="Cam" parent="CabinetTransCam" node_paths=PackedStringArray("ball") instance=ExtResource("2_p7wib")]
+ball = NodePath("../../Rabbitball")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(456, 360)
+scale = Vector2(16.8, 16.8)
+script = ExtResource("1_1kti2")
+
+[node name="BG" parent="." instance=ExtResource("1_rnk73")]
+
+[node name="Rabbitball" type="RigidBody2D" parent="."]
+script = ExtResource("2_r66u3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rabbitball"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_47enx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rabbitball"]
+shape = SubResource("CircleShape2D_oubkg")

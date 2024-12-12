@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://co8o3wn4m75xf"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_lnkfs"]
+[ext_resource type="PackedScene" uid="uid://c3smd13tjiltq" path="res://objects/game/cabinet_trans_cam.tscn" id="2_0c557"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="3_w0o3r"]
+[ext_resource type="Script" path="res://menus/runtime/scripts/cabinet.gd" id="4_j44as"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="5_d52ru"]
+[ext_resource type="PackedScene" uid="uid://daw6wrbsjioqo" path="res://objects/game/spawnpoint.tscn" id="6_u06df"]
+[ext_resource type="PackedScene" uid="uid://b3l67dn7oat0b" path="res://objects/world/platform.tscn" id="7_e56wk"]
+[ext_resource type="PackedScene" uid="uid://doanu7b7x6k3" path="res://objects/objects/flipper_block_2x1.tscn" id="8_8to1w"]
+[ext_resource type="PackedScene" uid="uid://d0w6k4f8fpi0r" path="res://objects/objects/obj_bumper_2x2.tscn" id="9_0kdn6"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="10_xc3nn"]
+[ext_resource type="PackedScene" uid="uid://bh7q842qhtwqs" path="res://objects/objects/obj_door_1x2.tscn" id="11_gxp3p"]
+[ext_resource type="PackedScene" uid="uid://bw7vy6xww2gf5" path="res://objects/objects/flipper_2x1_slopeddown_left.tscn" id="12_7okuu"]
+[ext_resource type="PackedScene" uid="uid://dc5ptug8grs0v" path="res://objects/objects/flipper_1x2.tscn" id="13_5nh6h"]
+[ext_resource type="PackedScene" uid="uid://brt0stkwe1vwx" path="res://objects/objects/obj_switch.tscn" id="14_62sca"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lnkfs")
+auto_spawn = false
+spawn_at = 1
+show_dev_ui = true
+
+[node name="CabinetTransCam" parent="." instance=ExtResource("2_0c557")]
+
+[node name="Cam" parent="CabinetTransCam" instance=ExtResource("3_w0o3r")]
+
+[node name="C8" type="Node2D" parent="."]
+position = Vector2(1800, 3600)
+script = ExtResource("4_j44as")
+cabinet_id = 1
+level_id = 2001
+
+[node name="BG" parent="C8" instance=ExtResource("5_d52ru")]
+
+[node name="Spawnpoint" parent="C8" instance=ExtResource("6_u06df")]
+position = Vector2(744, 192)
+
+[node name="Platform" parent="C8" instance=ExtResource("7_e56wk")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C8/Platform"]
+polygon = PackedVector2Array(336, 288, 432, 288, 432, 624, 528, 624, 528, 480, 720, 432, 720, 720, 336, 720)
+
+[node name="Platform2" parent="C8" instance=ExtResource("7_e56wk")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C8/Platform2"]
+polygon = PackedVector2Array(0, 0, 0, 720, 240, 720, 240, 432, 96, 480, 96, 384, 240, 336, 240, 192, 336, 144, 432, 192, 576, 192, 576, 288, 624, 336, 720, 336, 720, 0)
+
+[node name="FlipperBlock" parent="C8" instance=ExtResource("8_8to1w")]
+position = Vector2(720, 288)
+
+[node name="FlipperBlock2" parent="C8" instance=ExtResource("8_8to1w")]
+position = Vector2(720, 432)
+rotation = -0.174533
+
+[node name="FlipperBlock3" parent="C8" instance=ExtResource("8_8to1w")]
+position = Vector2(432, 480)
+
+[node name="FlipperBlock4" parent="C8" instance=ExtResource("8_8to1w")]
+position = Vector2(432, 288)
+rotation = 0.0872665
+
+[node name="Bumper" parent="C8" instance=ExtResource("9_0kdn6")]
+position = Vector2(480, 624)
+
+[node name="Bumper2" parent="C8" instance=ExtResource("9_0kdn6")]
+position = Vector2(576, 264)
+
+[node name="C9" type="Node2D" parent="."]
+position = Vector2(1800, 4320)
+script = ExtResource("4_j44as")
+cabinet_id = 2
+level_id = 2002
+
+[node name="Spawnpoint" parent="C9" instance=ExtResource("6_u06df")]
+position = Vector2(264, 96)
+
+[node name="BG" parent="C9" instance=ExtResource("5_d52ru")]
+
+[node name="C10" type="Node2D" parent="."]
+position = Vector2(1800, 5040)
+script = ExtResource("4_j44as")
+cabinet_id = 3
+level_id = 2003
+
+[node name="BG" parent="C10" instance=ExtResource("5_d52ru")]
+
+[node name="Spawnpoint" parent="C10" instance=ExtResource("6_u06df")]
+position = Vector2(168, 48)
+
+[node name="Platform" type="StaticBody2D" parent="C10"]
+script = ExtResource("10_xc3nn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C10/Platform"]
+polygon = PackedVector2Array(-24, 0, 120, 0, 120, 480, 504, 576, 408, 720, -24, 720)
+
+[node name="Platform2" parent="C10" instance=ExtResource("7_e56wk")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C10/Platform2"]
+polygon = PackedVector2Array(216, 0, 216, 432, 456, 480, 504, 432, 504, 384, 504, 336, 360, 288, 360, 384, 264, 384, 264, 288, 266.105, 144, 792, 144, 792, 624, 696, 624, 696, 336, 600, 336, 600, 720, 792, 720, 936, 720, 936, 0)
+
+[node name="FlipperMover" parent="C10" instance=ExtResource("12_7okuu")]
+position = Vector2(504, 576)
+move_to = Vector2(0, -240)
+is_flipper = 1
+flipper_speed = 0.2
+
+[node name="FlipperMover2" parent="C10" instance=ExtResource("13_5nh6h")]
+position = Vector2(456, 240)
+move_to = Vector2(144, 0)
+flipper_speed = 0.15
+
+[node name="FlipperBlock" parent="C10" instance=ExtResource("8_8to1w")]
+position = Vector2(264, 276)
+rotation = 0.174533
+open_on_rest = true
+is_flipper = 1
+
+[node name="Bumper" parent="C10" instance=ExtResource("9_0kdn6")]
+position = Vector2(312, 384)
+fixed_push = true
+push_toward = Vector2(0, -800)
+
+[node name="Door" parent="C10" instance=ExtResource("11_gxp3p")]
+position = Vector2(696, 432)
+
+[node name="Switch" parent="C10" instance=ExtResource("14_62sca")]
+position = Vector2(312, 144)
+rotation = 3.14159

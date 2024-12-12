@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://heagb3fp3pwg"]
+
+[ext_resource type="FontFile" uid="uid://d3ejiuvas82sx" path="res://assets/addons/fonts/Rabbitfont-Bold.ttf" id="1_speas"]
+
+[resource]
+base_font = ExtResource("1_speas")
+spacing_glyph = -2
+spacing_space = 1

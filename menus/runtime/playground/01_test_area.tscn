@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://0prpmh10snf4"]
+
+[ext_resource type="PackedScene" uid="uid://bs43edabl4355" path="res://menus/runtime/ui/misc/dev_ui.tscn" id="1_15qcc"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="1_jk1k1"]
+[ext_resource type="PackedScene" uid="uid://c3smd13tjiltq" path="res://objects/game/cabinet_trans_cam.tscn" id="1_qa3kr"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="2_bv6sx"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="2_q2g8e"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="3_cvn22"]
+[ext_resource type="PackedScene" uid="uid://bw7vy6xww2gf5" path="res://objects/objects/flipper_2x1_slopeddown_left.tscn" id="5_p7mqb"]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="CabinetTransCam" parent="." node_paths=PackedStringArray("rabbitball") instance=ExtResource("1_qa3kr")]
+rabbitball = NodePath("../RB")
+
+[node name="Cam" parent="CabinetTransCam" instance=ExtResource("2_q2g8e")]
+
+[node name="DevUI" parent="." instance=ExtResource("1_15qcc")]
+
+[node name="RB" parent="." instance=ExtResource("2_bv6sx")]
+position = Vector2(192, 48)
+
+[node name="C1" type="Node2D" parent="."]
+
+[node name="BG" parent="C1" instance=ExtResource("1_jk1k1")]
+
+[node name="Platform" type="StaticBody2D" parent="C1"]
+script = ExtResource("3_cvn22")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C1/Platform"]
+polygon = PackedVector2Array(0, 0, 144, 0, 144, 432, 432, 480, 432, 624, 528, 624, 528, 384, 576, 336, 624, 336, 624, 576, 720, 576, 720, 240, 768, 192, 826.766, 192, 912, 240, 912, 720, 0, 720)
+
+[node name="Platform2" type="StaticBody2D" parent="C1"]
+script = ExtResource("3_cvn22")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C1/Platform2"]
+polygon = PackedVector2Array(240, 0, 240, 336, 432, 420, 432, 240, 528, 144, 624, 144, 720, 48, 912, 48, 912, 0)
+
+[node name="FlipperMover" parent="C1" instance=ExtResource("5_p7mqb")]
+position = Vector2(432, 528)
+move_to = Vector2(0, 48)
+
+[node name="FlipperMover2" parent="C1" instance=ExtResource("5_p7mqb")]
+position = Vector2(624, 528)
+move_to = Vector2(0, 48)
+
+[node name="C2" type="Node2D" parent="."]
+position = Vector2(900, 0)
+
+[node name="BG" parent="C2" instance=ExtResource("1_jk1k1")]
+
+[node name="Platform" type="StaticBody2D" parent="C2"]
+script = ExtResource("3_cvn22")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C2/Platform"]
+polygon = PackedVector2Array(12, 240, 156, 288, 156, 480, 300, 528, 444, 576, 444, 624, 444, 672, 540, 672, 540, 288, 684, 336, 828, 384, 972, 432, 972, 720, 12, 720)
+
+[node name="Platform2" type="StaticBody2D" parent="C2"]
+script = ExtResource("3_cvn22")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C2/Platform2"]
+polygon = PackedVector2Array(12, 0, 12, 48, 156, 96, 252, 144, 252, 336, 348, 336, 444, 288, 444, 144, 540, 96, 588, 96, 972, 192, 972, 0)
+
+[node name="FlipperMover" parent="C2" instance=ExtResource("5_p7mqb")]
+position = Vector2(444, 624)
+move_to = Vector2(0, -336)
+flipper_speed = 0.05

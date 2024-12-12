@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://crvhdomwxier6"]
+
+[ext_resource type="Script" path="res://objects/scripts/game/game_cam.gd" id="1_vjpn0"]
+
+[node name="Cam" type="Camera2D"]
+anchor_mode = 0
+zoom = Vector2(1.16, 1.16)
+position_smoothing_speed = 10.0
+script = ExtResource("1_vjpn0")

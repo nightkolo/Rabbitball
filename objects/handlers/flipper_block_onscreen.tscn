@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ma254xi1uxdt"]
+
+[ext_resource type="Script" path="res://objects/handlers/flipper_block_onscreen.gd" id="1_rl3lw"]
+
+[node name="FlipperBlockOnscreen" type="VisibleOnScreenNotifier2D"]
+script = ExtResource("1_rl3lw")
+
+[connection signal="screen_entered" from="." to="." method="_en"]
+[connection signal="screen_exited" from="." to="." method="_ex"]

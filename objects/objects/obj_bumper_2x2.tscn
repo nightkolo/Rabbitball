@@ -1,0 +1,219 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0w6k4f8fpi0r"]
+
+[ext_resource type="Script" path="res://objects/scripts/obj_bumper.gd" id="1_fxsy8"]
+[ext_resource type="Texture2D" uid="uid://bo78gdgjj4fo1" path="res://assets/objects/bumper-2x2-01.png" id="1_h3ty7"]
+[ext_resource type="PackedScene" uid="uid://8y60bisql42u" path="res://objects/game/bumper_area.tscn" id="3_jt3n6"]
+[ext_resource type="Texture2D" uid="uid://c3onyf3r1y2du" path="res://assets/objects/bumper-2x2-02.png" id="3_ycck1"]
+[ext_resource type="Texture2D" uid="uid://kcqqpgxtxfgd" path="res://assets/world/particle_rabbitstar_02.png" id="6_uuy5a"]
+[ext_resource type="Curve" uid="uid://rd07jl5j1lto" path="res://resources/rabbitstar_particle_scale.tres" id="7_4uay2"]
+[ext_resource type="AudioStream" uid="uid://dcrxu4na5swu6" path="res://audio/sfx/bumper_hit_02.ogg" id="7_htqgk"]
+[ext_resource type="Gradient" uid="uid://bhv5rtvnqecvx" path="res://resources/flashy_particle_color.tres" id="7_p6c7o"]
+[ext_resource type="AudioStream" uid="uid://dvdcjpo1culro" path="res://audio/sfx/bumper_hit_03.ogg" id="8_bmg1t"]
+[ext_resource type="AudioStream" uid="uid://dhfw1hk4e6f0o" path="res://audio/sfx/bumper_hit_01.ogg" id="8_t0gj8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7o3ok"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvvr8"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85720"]
+radius = 51.0098
+
+[sub_resource type="Animation" id="Animation_j35y2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_h3ty7")]
+}
+
+[sub_resource type="Animation" id="Animation_k6ptj"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ycck1"), ExtResource("1_h3ty7"), ExtResource("3_ycck1"), ExtResource("1_h3ty7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yd1g2"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_h3ty7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0o1k"]
+_data = {
+"RESET": SubResource("Animation_j35y2"),
+"bounce": SubResource("Animation_k6ptj"),
+"idle": SubResource("Animation_yd1g2")
+}
+
+[node name="Bumper" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7o3ok")
+script = ExtResource("1_fxsy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h3ty7")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.25)
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h3ty7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xvvr8")
+
+[node name="BumperArea" parent="." instance=ExtResource("3_jt3n6")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_85720")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Anim" type="AnimationPlayer" parent="Node"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_c0o1k")
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Bounce1" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_t0gj8")
+volume_db = -24.794
+bus = &"GameSound"
+
+[node name="Bounce2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_htqgk")
+volume_db = -24.794
+bus = &"GameSound"
+
+[node name="Bounce3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_bmg1t")
+volume_db = -24.794
+bus = &"GameSound"
+
+[node name="LeftParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-24, 0)
+emitting = false
+amount = 2
+lifetime = 0.65
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("6_uuy5a")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 25)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 98)
+initial_velocity_min = 35.35
+initial_velocity_max = 35.35
+angular_velocity_max = 100.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_max = 10.0
+scale_amount_curve = ExtResource("7_4uay2")
+color_ramp = ExtResource("7_p6c7o")
+
+[node name="RightParticles" type="CPUParticles2D" parent="."]
+position = Vector2(24, 0)
+emitting = false
+amount = 2
+lifetime = 0.65
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("6_uuy5a")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 25)
+gravity = Vector2(0, 98)
+initial_velocity_min = 35.35
+initial_velocity_max = 35.35
+angular_velocity_max = 100.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_max = 10.0
+scale_amount_curve = ExtResource("7_4uay2")
+color_ramp = ExtResource("7_p6c7o")

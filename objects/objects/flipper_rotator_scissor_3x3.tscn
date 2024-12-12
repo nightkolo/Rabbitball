@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbowuyge31msd"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_rotation.gd" id="1_xyaet"]
+[ext_resource type="Texture2D" uid="uid://dnc74s43lb64n" path="res://assets/objects/flipper-rotator-scissor-3x3.png" id="2_bccbv"]
+[ext_resource type="PackedScene" uid="uid://cpwdrfqw7ej2g" path="res://objects/game/scissor_rotator_hold_boundry_area.tscn" id="3_87fjf"]
+[ext_resource type="AudioStream" uid="uid://dk21i5acv8b01" path="res://audio/sfx/flipper_rotator_scissor_held.ogg" id="4_iitmn"]
+[ext_resource type="AudioStream" uid="uid://diyvunnghats" path="res://audio/sfx/flipper_rotator_scissor_rest.ogg" id="5_0vmj6"]
+[ext_resource type="PackedScene" uid="uid://b3q58b3wm3dlo" path="res://objects/handlers/flipper_rotator_onscreen.tscn" id="5_56d7r"]
+[ext_resource type="PackedScene" uid="uid://df543wl0lrnur" path="res://objects/world/flipper_pointer.tscn" id="6_g1oil"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u78sp"]
+radius = 36.0
+
+[node name="FlipperRotator" type="AnimatableBody2D"]
+script = ExtResource("1_xyaet")
+is_rotator = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bccbv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-60, 6, -60, -6, -12, -12, -6, -60, 6, -60, 12, -12, 60, -6, 60, 6, 12, 12, 6, 60, -6, 60, -12, 12)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u78sp")
+
+[node name="HoldBoundry" parent="." instance=ExtResource("3_87fjf")]
+visible = false
+scale = Vector2(1.25, 1.25)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Held" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_iitmn")
+volume_db = -45.455
+bus = &"GameSound"
+
+[node name="Rest" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_0vmj6")
+volume_db = -42.857
+bus = &"GameSound"
+
+[node name="FlipperRotatorOnscreen" parent="." instance=ExtResource("5_56d7r")]
+
+[node name="FlipperPointer" parent="." instance=ExtResource("6_g1oil")]

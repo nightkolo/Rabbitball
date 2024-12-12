@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn6k65rm0d464"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_02pwk"]
+[ext_resource type="Script" path="res://menus/interactors/menu_title_screen.gd" id="2_pjj0i"]
+[ext_resource type="FontVariation" uid="uid://cuau3etyjayj1" path="res://resources/theme/font_variation_game_title.tres" id="3_mfb30"]
+[ext_resource type="Texture2D" uid="uid://c620jwt34yjqn" path="res://assets/interface/logo-beta-small.png" id="4_lam30"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="4_qoq28"]
+
+[sub_resource type="FontVariation" id="FontVariation_vp18y"]
+spacing_top = -3
+spacing_bottom = -3
+
+[sub_resource type="FontVariation" id="FontVariation_noaqa"]
+spacing_top = -3
+spacing_bottom = -3
+
+[node name="MenuTitle" type="CanvasLayer" groups=["MenuScreen"]]
+script = ExtResource("2_pjj0i")
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_02pwk")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameTitle" type="RichTextLabel" parent="Main/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(1, 1, 0.823529, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_mfb30")
+bbcode_enabled = true
+text = "[font_size=100][wave amp=50.0 freq=5.0 connected=10] Rabbitball "
+fit_content = true
+autowrap_mode = 0
+
+[node name="Logo" type="TextureRect" parent="Main/VBoxContainer/CenterContainer"]
+visible = false
+self_modulate = Color(1, 1, 0.8, 1)
+layout_mode = 2
+texture = ExtResource("4_lam30")
+
+[node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../SelectCabinetButton")
+text = "Start"
+script = ExtResource("4_qoq28")
+
+[node name="SelectCabinetButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+text = "Select Cabinet"
+script = ExtResource("4_qoq28")
+
+[node name="OptionsButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SelectCabinetButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+text = "Options"
+script = ExtResource("4_qoq28")
+
+[node name="CreditsButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+text = "Credits"
+script = ExtResource("4_qoq28")
+
+[node name="CRLabel" type="Label" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_vp18y")
+theme_override_font_sizes/font_size = 20
+text = "2024 ©
+Night Kolo"
+
+[node name="VersionInfoLabel" type="Label" parent="Main"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_vp18y")
+theme_override_font_sizes/font_size = 20
+text = "Beta build
+by Night Kolo"
+
+[node name="VerLabel" type="Label" parent="Main"]
+self_modulate = Color(1, 1, 1, 0.751)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_noaqa")
+theme_override_font_sizes/font_size = 24
+text = "v1.1"

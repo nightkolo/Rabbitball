@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5uclaqxwx1rk"]
+
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="1_esc25"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="2_jckrq"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="3_eihaw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ca37"]
+
+[node name="Platform" type="StaticBody2D"]
+collision_mask = 48
+physics_material_override = SubResource("PhysicsMaterial_2ca37")
+script = ExtResource("1_esc25")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -384, 240, -384, 240, -288, 480, -192, 480, -144, 240, -48, 240, 96, 480, 192, 480, 240, 240, 336, 240, 480, 480, 576, 480, 624, 240, 720, 0, 720)
+
+[node name="Texture" parent="." instance=ExtResource("2_jckrq")]
+position = Vector2(0, -360)
+polygon = PackedVector2Array(0, 0, 240, 0, 240, 72, 480, 168, 480, 216, 240, 312, 240, 456, 480, 552, 480, 600, 300, 672, 0, 672)
+
+[node name="Outline" parent="Texture" instance=ExtResource("3_eihaw")]
+points = PackedVector2Array(240, 0, 240, 72, 480, 168, 480, 216, 240, 312, 240, 456, 480, 552, 480, 600, 240, 696)
+
+[node name="Texture2" parent="." instance=ExtResource("2_jckrq")]
+position = Vector2(0, 312)
+polygon = PackedVector2Array(0, 0, 300, 0, 240, 24, 240, 168, 480, 264, 480, 312, 240, 408, 0, 408)
+
+[node name="Outline" parent="Texture2" instance=ExtResource("3_eihaw")]
+points = PackedVector2Array(300, 0, 240, 24, 240, 168, 480, 264, 480, 312, 240, 408, 192, 408)

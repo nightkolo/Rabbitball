@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbkns60yggv3b"]
+
+[ext_resource type="Texture2D" uid="uid://6idgxs3hyii0" path="res://assets/world/platform-texture-a1.png" id="1_v2w1v"]
+
+[node name="Texture" type="Polygon2D"]
+self_modulate = Color(0.843137, 0.843137, 0.521569, 1)
+clip_children = 2
+texture = ExtResource("1_v2w1v")
+texture_scale = Vector2(2, 2)
+metadata/_edit_lock_ = true

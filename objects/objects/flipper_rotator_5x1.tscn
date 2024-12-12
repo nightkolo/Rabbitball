@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4bdggn0q6ryn"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_rotation.gd" id="1_2lmx7"]
+[ext_resource type="Texture2D" uid="uid://crp627q7njb2o" path="res://assets/objects/flipper-rotator-head-5x1.png" id="2_8uxgk"]
+[ext_resource type="Texture2D" uid="uid://cg4iwnrl5iny0" path="res://assets/objects/flipper-rotator-base.png" id="3_47qme"]
+[ext_resource type="AudioStream" uid="uid://dxgaao8vsydah" path="res://audio/sfx/flipper_rotator_held.ogg" id="4_1beeu"]
+[ext_resource type="PackedScene" uid="uid://b3q58b3wm3dlo" path="res://objects/handlers/flipper_rotator_onscreen.tscn" id="5_a8kyy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f35os"]
+size = Vector2(240, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpsb"]
+size = Vector2(240.171, 85.3879)
+
+[node name="FlipperRotator" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2lmx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_f35os")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8uxgk")
+offset = Vector2(0, -20)
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_47qme")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0651855, -53.757)
+shape = SubResource("RectangleShape2D_5jpsb")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Held" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_1beeu")
+volume_db = -45.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Rest" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_1beeu")
+volume_db = -45.0
+bus = &"SFX"
+
+[node name="FlipperRotatorOnscreen" parent="." instance=ExtResource("5_a8kyy")]

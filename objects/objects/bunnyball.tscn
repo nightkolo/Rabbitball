@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://diu2q73r15ygh"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dtpqog6ffmlnc" path="res://resources/bunnyball_phy_mat.tres" id="1_bkvhr"]
+[ext_resource type="Script" path="res://objects/scripts/bunnyball.gd" id="1_e3pmy"]
+[ext_resource type="Texture2D" uid="uid://c4pilrllakm06" path="res://assets/objects/bunnyball-idle-01.png" id="2_lshhl"]
+[ext_resource type="Script" path="res://objects/scripts/game/bunnyball_process.gd" id="4_0jbdv"]
+[ext_resource type="Texture2D" uid="uid://bcp1l0ei2bcs8" path="res://assets/world/particle_circle_02.png" id="4_gbwj2"]
+[ext_resource type="Texture2D" uid="uid://557623wrq3h4" path="res://assets/world/particle_circle_01.png" id="5_aogk2"]
+[ext_resource type="Script" path="res://objects/deco/rabbitball-trail.gd" id="6_3bfpb"]
+[ext_resource type="AudioStream" uid="uid://6pttklgcl4h5" path="res://audio/sfx/bunnyball_rolling_01.wav" id="8_m4csv"]
+[ext_resource type="AudioStream" uid="uid://bmpcmprgetgfm" path="res://audio/sfx/bunnyball_landed_01.ogg" id="9_8q8ud"]
+[ext_resource type="AudioStream" uid="uid://bl2eo2h5fo7gl" path="res://audio/sfx/bunnyball_landed_ceiling_01.ogg" id="10_18j60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiw8r"]
+radius = 27.2947
+
+[sub_resource type="Curve" id="Curve_di2se"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sseor"]
+_data = [Vector2(0, 0.406593), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_puui5"]
+_data = [Vector2(0.592437, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_lac4v"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sa1ls"]
+radius = 33.0606
+
+[node name="BB" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 255
+physics_material_override = ExtResource("1_bkvhr")
+can_sleep = false
+script = ExtResource("1_e3pmy")
+rolling_sound_volume_limit = -15.0
+rolling_sound_volume_min = -40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_lshhl")
+offset = Vector2(0, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tiw8r")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("4_0jbdv")
+
+[node name="Trail" type="Line2D" parent="."]
+visible = false
+z_index = -1
+width = 20.0
+width_curve = SubResource("Curve_di2se")
+default_color = Color(1, 1, 1, 0.5)
+script = ExtResource("6_3bfpb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.395)
+z_index = -1
+amount = 16
+randomness = 1.0
+texture = ExtResource("4_gbwj2")
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 98)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_sseor")
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.395)
+z_index = 1
+emitting = false
+amount = 4
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_aogk2")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+scale_amount_curve = SubResource("Curve_puui5")
+color_ramp = SubResource("Gradient_lac4v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 127
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_sa1ls")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Rolling" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_m4csv")
+bus = &"GameSound"
+
+[node name="Landed" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_8q8ud")
+volume_db = -20.0
+bus = &"GameSound"
+
+[node name="LandedCeiling" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("10_18j60")
+volume_db = -25.0
+bus = &"GameSound"

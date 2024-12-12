@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp0jrvm6opoqd"]
+
+[ext_resource type="Script" path="res://objects/scripts/world/infopoint_normal.gd" id="1_0nf62"]
+
+[node name="InfoN" type="Marker2D"]
+script = ExtResource("1_0nf62")

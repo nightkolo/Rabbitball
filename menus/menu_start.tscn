@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvgnw81dx0c4v"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_3ncw4"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_jps72"]
+[ext_resource type="Script" path="res://menus/interactors/menu_start.gd" id="2_nn2qk"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="3_5dw2i"]
+[ext_resource type="PackedScene" uid="uid://b5uclaqxwx1rk" path="res://objects/game/intro_platform_left.tscn" id="4_1wgfv"]
+[ext_resource type="PackedScene" uid="uid://dexj8n3wovydc" path="res://objects/game/intro_platform_right.tscn" id="5_bqb4w"]
+[ext_resource type="FontVariation" uid="uid://cuau3etyjayj1" path="res://resources/theme/font_variation_game_title.tres" id="6_2dvn5"]
+[ext_resource type="Texture2D" uid="uid://c620jwt34yjqn" path="res://assets/interface/logo-beta-small.png" id="7_lctie"]
+
+[sub_resource type="FontVariation" id="FontVariation_r6fpm"]
+spacing_top = -3
+spacing_bottom = -3
+
+[sub_resource type="FontVariation" id="FontVariation_3udax"]
+spacing_top = -3
+spacing_bottom = -3
+
+[node name="MenuStart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3ncw4")
+script = ExtResource("2_nn2qk")
+
+[node name="World" type="Node2D" parent="."]
+position = Vector2(-48, 0)
+scale = Vector2(1.1, 1.1)
+
+[node name="BG" parent="World" instance=ExtResource("3_5dw2i")]
+
+[node name="Platform" parent="World" instance=ExtResource("4_1wgfv")]
+position = Vector2(0, 360)
+
+[node name="Platform2" parent="World" instance=ExtResource("5_bqb4w")]
+position = Vector2(0, 360)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 110
+theme_override_constants/margin_bottom = 110
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(1, 1, 0.823529, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/normal_font = ExtResource("6_2dvn5")
+bbcode_enabled = true
+text = "[font_size=100][wave amp=50.0 freq=5.0 connected=10] Rabbitball "
+fit_content = true
+autowrap_mode = 0
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+visible = false
+self_modulate = Color(1, 1, 0.8, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_lctie")
+stretch_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+script = ExtResource("2_jps72")
+
+[node name="CRLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_r6fpm")
+theme_override_font_sizes/font_size = 20
+text = "2024 ©
+Night Kolo"
+
+[node name="VerLabel" type="Label" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.751)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_r6fpm")
+theme_override_font_sizes/font_size = 24
+text = "v1.1"
+
+[node name="VersionInfoLabel" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = SubResource("FontVariation_3udax")
+theme_override_font_sizes/font_size = 20
+text = "Hello there.
+Alpha build, v3
+by Night Kolo"

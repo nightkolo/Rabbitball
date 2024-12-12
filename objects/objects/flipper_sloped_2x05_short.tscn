@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgop66g5c3pak"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_movement.gd" id="1_akc8x"]
+[ext_resource type="Texture2D" uid="uid://c0hfijsvitlx7" path="res://assets/objects/flipper-sloped-2x05-short.png" id="2_77pqb"]
+[ext_resource type="PackedScene" uid="uid://df543wl0lrnur" path="res://objects/world/flipper_pointer.tscn" id="3_x7gic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi415"]
+size = Vector2(96, 96)
+
+[node name="FlipperMover2" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_akc8x")
+one_way_collision = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 96, 24, 96, 48, 0, 48)
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_77pqb")
+centered = false
+offset = Vector2(-6, -6)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(48, 0)
+shape = SubResource("RectangleShape2D_bi415")
+
+[node name="FlipperPointer" parent="." instance=ExtResource("3_x7gic")]
+position = Vector2(24, 27)

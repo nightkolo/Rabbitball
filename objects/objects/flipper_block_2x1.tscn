@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://doanu7b7x6k3"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_block.gd" id="1_65lr5"]
+[ext_resource type="Texture2D" uid="uid://ottwxjwkd8tu" path="res://assets/objects/flipper-block-2x1.png" id="2_fhgj3"]
+
+[node name="FlipperBlock" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_65lr5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 48, 0, 48)
+
+[node name="Block" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fhgj3")
+centered = false
+offset = Vector2(-6, -6)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.5)
+z_index = -1
+position = Vector2(3, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fhgj3")
+centered = false
+offset = Vector2(-6, -6)

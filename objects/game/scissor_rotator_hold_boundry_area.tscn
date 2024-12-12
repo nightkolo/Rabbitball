@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cpwdrfqw7ej2g"]
+
+[node name="HoldBoundry" type="StaticBody2D"]
+rotation = -3.14159
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-66, 0, -48, -48, 0, -66, 48, -48, 66, 0, 48, 48, 0, 66, -42, 48, -48, 54, 0, 72, 54, 54, 72, 0, 54, -54, 0, -72, -54, -54, -72, 0, -48, 48)
+disabled = true
+one_way_collision = true

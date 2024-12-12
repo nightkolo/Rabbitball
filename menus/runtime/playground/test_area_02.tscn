@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci04pvc127l03"]
+
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="1_0jbdr"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="2_5mf83"]
+[ext_resource type="PackedScene" uid="uid://b3l67dn7oat0b" path="res://objects/world/platform.tscn" id="3_atpjc"]
+[ext_resource type="PackedScene" uid="uid://bvs30h51ic6nc" path="res://objects/world/platform-texture-a2.tscn" id="4_x4hm4"]
+[ext_resource type="PackedScene" uid="uid://brt0stkwe1vwx" path="res://objects/objects/obj_switch.tscn" id="4_y2nd7"]
+[ext_resource type="PackedScene" uid="uid://bh7q842qhtwqs" path="res://objects/objects/obj_door_1x2.tscn" id="5_0hagb"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="5_uiroq"]
+[ext_resource type="PackedScene" uid="uid://bs43edabl4355" path="res://menus/runtime/ui/misc/dev_ui.tscn" id="6_tj7sg"]
+
+[node name="TW" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_0jbdr")]
+
+[node name="RB" parent="." instance=ExtResource("2_5mf83")]
+position = Vector2(144, 192)
+
+[node name="Platform" parent="." instance=ExtResource("3_atpjc")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(0, 240, 96, 240, 96, 336, 288, 384, 480, 432, 672, 480, 864, 528, 864, 432, 912, 432, 912, 720, 0, 720)
+
+[node name="Texture" parent="Platform" instance=ExtResource("4_x4hm4")]
+polygon = PackedVector2Array(0, 240, 96, 240, 96, 336, 288, 384, 480, 432, 672, 480, 864, 528, 864, 432, 912, 432, 912, 720, 0, 720)
+
+[node name="Outline" parent="Platform/Texture" instance=ExtResource("5_uiroq")]
+points = PackedVector2Array(0, 240, 96, 240, 96, 336, 288, 384, 480, 432, 672, 480, 864, 528, 864, 432, 912, 432)
+
+[node name="Switch" parent="." instance=ExtResource("4_y2nd7")]
+position = Vector2(288, 384)
+
+[node name="Switch2" parent="." instance=ExtResource("4_y2nd7")]
+position = Vector2(480, 432)
+is_DoorSwitch_type = 1
+
+[node name="Switch3" parent="." instance=ExtResource("4_y2nd7")]
+position = Vector2(672, 480)
+is_DoorSwitch_type = 2
+
+[node name="Door" parent="." instance=ExtResource("5_0hagb")]
+position = Vector2(336, 144)
+
+[node name="Door2" parent="." instance=ExtResource("5_0hagb")]
+position = Vector2(480, 192)
+
+[node name="Door3" parent="." instance=ExtResource("5_0hagb")]
+position = Vector2(432, 96)
+is_DoorSwitch_type = 1
+
+[node name="Door4" parent="." instance=ExtResource("5_0hagb")]
+position = Vector2(576, 144)
+is_DoorSwitch_type = 1
+
+[node name="DevUI" parent="." instance=ExtResource("6_tj7sg")]

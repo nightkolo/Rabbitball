@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=3 uid="uid://to77axul02br"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_r87hx"]
+[ext_resource type="PackedScene" uid="uid://yvs43asj7g57" path="res://menus/runtime/ui/misc/ui_display.tscn" id="2_nojyu"]
+[ext_resource type="PackedScene" uid="uid://lnm12sgkxt4m" path="res://objects/world/bg-a2.tscn" id="2_xp2p6"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="3_bs5mb"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="4_dgaut"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/test_area_15_cam.gd" id="4_g4rpy"]
+[ext_resource type="PackedScene" uid="uid://doanu7b7x6k3" path="res://objects/objects/flipper_block_2x1.tscn" id="5_2july"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="5_ocp62"]
+[ext_resource type="PackedScene" uid="uid://bxj83qfqdwo6l" path="res://objects/objects/flipper_block_1x1.tscn" id="5_tacx7"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="6_cmj4t"]
+[ext_resource type="Script" path="res://objects/scripts/obj_rabbithole.gd" id="9_hdx3j"]
+[ext_resource type="PackedScene" uid="uid://cf6m0icfyaxxb" path="res://objects/world/infopoint.tscn" id="11_wd2rc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph8mp"]
+size = Vector2(144, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1ufg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn180"]
+
+[node name="TA" type="Node2D"]
+script = ExtResource("1_r87hx")
+
+[node name="UI" parent="." instance=ExtResource("2_nojyu")]
+
+[node name="BG" parent="." instance=ExtResource("2_xp2p6")]
+
+[node name="Cam" type="Camera2D" parent="."]
+position = Vector2(450, 360)
+script = ExtResource("4_g4rpy")
+
+[node name="RB" parent="." instance=ExtResource("4_dgaut")]
+position = Vector2(-108, 143)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+script = ExtResource("3_bs5mb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+position = Vector2(2, 0)
+polygon = PackedVector2Array(-192, 192, 372, 336, 372, 432, 336, 528, 336, 720, -192, 720)
+
+[node name="Texture" parent="Platform" instance=ExtResource("5_ocp62")]
+self_modulate = Color(0.617277, 0.617491, 0.834716, 1)
+polygon = PackedVector2Array(-192, 192, 372, 336, 372, 432, 336, 528, 336, 720, -192, 720)
+
+[node name="Outline" parent="Platform/Texture" instance=ExtResource("6_cmj4t")]
+points = PackedVector2Array(-192, 192, 372, 336, 372, 432, 336, 528, 336, 720)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+script = ExtResource("3_bs5mb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2"]
+polygon = PackedVector2Array(0, 0, 912, 0, 912, 720, 480, 720, 480, 528, 432, 432, 432, 288, 480, 240, 480, 192, 336, 192, 0, 96)
+
+[node name="Texture" parent="Platform2" instance=ExtResource("5_ocp62")]
+self_modulate = Color(0.617277, 0.617491, 0.834716, 1)
+polygon = PackedVector2Array(0, 0, 912, 0, 912, 720, 480, 720, 480, 528, 432, 432, 432, 288, 480, 240, 480, 192, 336, 192, 0, 96)
+
+[node name="Outline" parent="Platform2/Texture" instance=ExtResource("6_cmj4t")]
+points = PackedVector2Array(480, 720, 480, 528, 432, 432, 432, 288, 480, 240, 480, 192, 336, 192, 0, 96)
+
+[node name="FlipperBlock2" parent="." instance=ExtResource("5_tacx7")]
+position = Vector2(378, 384)
+
+[node name="FlipperBlock" parent="." instance=ExtResource("5_2july")]
+visible = false
+position = Vector2(192, 384)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-120, 145)
+
+[node name="Rabbithole" type="Area2D" parent="." node_paths=PackedStringArray("teleport_to")]
+position = Vector2(384, 720)
+script = ExtResource("9_hdx3j")
+teleport_to = NodePath("../Marker2D")
+force_send = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rabbithole"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_ph8mp")
+
+[node name="Info" parent="." node_paths=PackedStringArray("area_to_open") instance=ExtResource("11_wd2rc")]
+position = Vector2(222, 416)
+area_to_open = NodePath("../Area2D")
+display_info = 1
+dialog_text_lines = Array[String](["Next up,
+Arcade 2 is on the way!", "You need a bit of rest...", "In the meantime, let's see if this dialog box integration is well and working!", "Anyhoooooo, goodnight.", "Byebye!!
+-Kolo"])
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(232, 414)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u1ufg")
+
+[node name="Info2" parent="." node_paths=PackedStringArray("area_to_open", "area_to_close") instance=ExtResource("11_wd2rc")]
+position = Vector2(576, 336)
+area_to_open = NodePath("../Area2D2")
+tutorial_text = "Hold
+[A], [D]
+or
+[<], [>]"
+area_to_close = NodePath("../Area2D3")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(366, 313)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_vn180")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(410, 576)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("CircleShape2D_vn180")

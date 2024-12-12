@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhpwrrsl3uel0"]
+
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="1_lcy67"]
+[ext_resource type="PackedScene" uid="uid://b3l67dn7oat0b" path="res://objects/world/platform.tscn" id="2_nb0y3"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="3_j3bfa"]
+[ext_resource type="Script" path="res://objects/scripts/obj_test_bumper.gd" id="4_l1vmj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0oxx0"]
+
+[node name="Tw" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_lcy67")]
+
+[node name="Platform" parent="." instance=ExtResource("2_nb0y3")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(0, 0, 144, 0, 144, 384, 288, 432, 432, 480, 576, 480, 720, 432, 720, 624, 576, 672, 0, 672)
+
+[node name="RB" parent="." instance=ExtResource("3_j3bfa")]
+position = Vector2(480, 336)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(480, 480)
+collision_layer = 0
+collision_mask = 48
+script = ExtResource("4_l1vmj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0oxx0")

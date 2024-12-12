@@ -1,0 +1,69 @@
+[gd_scene load_steps=14 format=3 uid="uid://sj6clhbn6p3a"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_hj20d"]
+[ext_resource type="PackedScene" uid="uid://yvs43asj7g57" path="res://menus/runtime/ui/misc/ui_display.tscn" id="2_2npce"]
+[ext_resource type="Script" path="res://menus/runtime/scripts/cabinet.gd" id="2_4us4b"]
+[ext_resource type="PackedScene" uid="uid://c3smd13tjiltq" path="res://objects/game/cabinet_trans_cam.tscn" id="2_a5dkm"]
+[ext_resource type="PackedScene" uid="uid://lnm12sgkxt4m" path="res://objects/world/bg-a2.tscn" id="3_sbg8t"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="3_yxaia"]
+[ext_resource type="PackedScene" uid="uid://daw6wrbsjioqo" path="res://objects/game/spawnpoint.tscn" id="4_j8t7v"]
+[ext_resource type="Script" path="res://objects/scripts/platform.gd" id="7_24skj"]
+[ext_resource type="PackedScene" uid="uid://bvs30h51ic6nc" path="res://objects/world/platform-texture-a2.tscn" id="8_hhdlm"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="9_bofr8"]
+[ext_resource type="Script" path="res://menus/runtime/playground/obj_test_launcher.gd" id="11_nksyl"]
+[ext_resource type="Script" path="res://objects/scripts/manipulation_area.gd" id="12_cw5cl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qclyr"]
+
+[node name="TA" type="Node2D"]
+script = ExtResource("1_hj20d")
+auto_spawn = false
+spawn_at = 1
+
+[node name="UI" parent="." instance=ExtResource("2_2npce")]
+
+[node name="CabinetTransCam" parent="." instance=ExtResource("2_a5dkm")]
+
+[node name="Cam" parent="CabinetTransCam" instance=ExtResource("3_yxaia")]
+pan_to_ball = false
+
+[node name="C1" type="Node2D" parent="."]
+script = ExtResource("2_4us4b")
+cabinet_id = 1
+
+[node name="BG" parent="C1" instance=ExtResource("3_sbg8t")]
+
+[node name="Spawnpoint" parent="C1" instance=ExtResource("4_j8t7v")]
+position = Vector2(192, 144)
+
+[node name="Platform" type="StaticBody2D" parent="C1"]
+script = ExtResource("7_24skj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C1/Platform"]
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 384, 144, 432, 410, 522, 432, 624, 480, 624, 498, 526, 768, 432, 816, 384, 816, 0, 912, 0, 912, 720, 0, 720)
+
+[node name="Texture" parent="C1/Platform" instance=ExtResource("8_hhdlm")]
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 384, 144, 432, 410, 522, 432, 624, 480, 624, 498, 526, 768, 432, 816, 384, 816, 0, 912, 0, 912, 720, 0, 720)
+
+[node name="Outline" parent="C1/Platform/Texture" instance=ExtResource("9_bofr8")]
+points = PackedVector2Array(96, 0, 96, 384, 144, 432, 410, 525, 432, 624, 480, 624, 499, 525, 768, 432, 816, 384, 816, 0)
+
+[node name="Launcher" type="Node2D" parent="C1"]
+position = Vector2(432, 528)
+script = ExtResource("11_nksyl")
+
+[node name="Colli" type="AnimatableBody2D" parent="C1/Launcher"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="C1/Launcher/Colli"]
+polygon = PackedVector2Array(-30, 1, 12, 24, 36, 24, 78, 0, 96, 96, -48, 96)
+
+[node name="PhysicsManipulationArea2D" type="Area2D" parent="C1/Launcher"]
+position = Vector2(24, 23)
+script = ExtResource("12_cw5cl")
+act_as_a_launcher = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="C1/Launcher/PhysicsManipulationArea2D"]
+shape = SubResource("CircleShape2D_qclyr")
+
+[node name="HoldTimer" type="Timer" parent="C1/Launcher"]
+one_shot = true

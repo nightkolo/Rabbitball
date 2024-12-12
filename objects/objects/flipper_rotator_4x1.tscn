@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpfxxr2q570kr"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_rotation.gd" id="1_63u1u"]
+[ext_resource type="Texture2D" uid="uid://crp627q7njb2o" path="res://assets/objects/flipper-rotator-head-5x1.png" id="2_w7tgn"]
+[ext_resource type="Texture2D" uid="uid://cg4iwnrl5iny0" path="res://assets/objects/flipper-rotator-base.png" id="3_p8fx5"]
+[ext_resource type="AudioStream" uid="uid://dxgaao8vsydah" path="res://audio/sfx/flipper_rotator_held.ogg" id="4_mi0ta"]
+[ext_resource type="PackedScene" uid="uid://b3q58b3wm3dlo" path="res://objects/handlers/flipper_rotator_onscreen.tscn" id="5_n7ibk"]
+[ext_resource type="AudioStream" uid="uid://jmm6awptp0af" path="res://audio/sfx/flipper_rotator_rest.ogg" id="5_o1383"]
+[ext_resource type="PackedScene" uid="uid://df543wl0lrnur" path="res://objects/world/flipper_pointer.tscn" id="6_ht1o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f35os"]
+size = Vector2(197.138, 20)
+
+[node name="FlipperRotator" type="AnimatableBody2D"]
+script = ExtResource("1_63u1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.516724, -24)
+shape = SubResource("RectangleShape2D_f35os")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_p8fx5")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("2_w7tgn")
+offset = Vector2(0, -20)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Held" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_mi0ta")
+volume_db = -45.455
+pitch_scale = 1.1
+bus = &"GameSound"
+
+[node name="Rest" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_o1383")
+volume_db = -42.954
+bus = &"GameSound"
+
+[node name="FlipperRotatorOnscreen" parent="." instance=ExtResource("5_n7ibk")]
+
+[node name="FlipperPointer" parent="." instance=ExtResource("6_ht1o4")]

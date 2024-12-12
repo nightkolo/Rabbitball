@@ -1,0 +1,152 @@
+[gd_scene load_steps=24 format=3 uid="uid://ckvkllpwhnd7h"]
+
+[ext_resource type="Script" path="res://scripts/system_audio.gd" id="1_pbnfu"]
+[ext_resource type="AudioStream" uid="uid://b4k4bsskqwquh" path="res://audio/sfx/flipper_up.wav" id="2_rn0fl"]
+[ext_resource type="AudioStream" uid="uid://c4n5qlyikg3cd" path="res://audio/sfx/flipper_down.wav" id="3_qeyuw"]
+[ext_resource type="AudioStream" uid="uid://bj875caytvhmq" path="res://audio/sfx/flipper_block_up.ogg" id="4_yoe3s"]
+[ext_resource type="AudioStream" uid="uid://b1dxnxf42y7va" path="res://audio/sounds/cabinet_complete_04.ogg" id="5_3kgia"]
+[ext_resource type="AudioStream" uid="uid://c1gdgxf8wc2vj" path="res://audio/sfx/flipper_block_down.ogg" id="5_mb8km"]
+[ext_resource type="AudioStream" uid="uid://bjw8slelao4y4" path="res://audio/sounds/cabinet_complete_01.ogg" id="5_sfdl3"]
+[ext_resource type="AudioStream" uid="uid://cu1jiurfxcih5" path="res://audio/sounds/cabinet_complete_03.ogg" id="6_po70d"]
+[ext_resource type="AudioStream" uid="uid://by27krl5f6ugx" path="res://audio/sounds/cabinet_reset.ogg" id="6_pok74"]
+[ext_resource type="AudioStream" uid="uid://bht4rq8g022ik" path="res://audio/sounds/cabinet_complete_02.ogg" id="9_s63g4"]
+[ext_resource type="AudioStream" uid="uid://bco40pk6pxykk" path="res://audio/sounds/ui_button_hover.ogg" id="11_gulgy"]
+[ext_resource type="AudioStream" uid="uid://c6tmyx6msrnsu" path="res://audio/sounds/ui_button_click.ogg" id="12_r4tbg"]
+[ext_resource type="AudioStream" uid="uid://bibuetdsbj0u0" path="res://audio/sounds/ui_menu_enter.ogg" id="14_tb0o2"]
+[ext_resource type="AudioStream" uid="uid://4exahgcpisdo" path="res://audio/sounds/ui_option_toggle_01.ogg" id="15_ruewi"]
+[ext_resource type="AudioStream" uid="uid://u3aed0fydtre" path="res://audio/sounds/game_intro_02.wav" id="19_hypcw"]
+[ext_resource type="AudioStream" uid="uid://b8bbr888ncp8l" path="res://audio/sounds/game_intro_01.wav" id="20_8tq14"]
+[ext_resource type="AudioStream" uid="uid://stfev3mmxpyh" path="res://audio/sounds/arcade_complete.ogg" id="23_6sft8"]
+[ext_resource type="AudioStream" uid="uid://xfc40hexfcdq" path="res://audio/sfx/letter_spin.wav" id="23_siyyu"]
+[ext_resource type="AudioStream" uid="uid://br4fbl0epxkhx" path="res://audio/sounds/game_start.ogg" id="28_ur6k8"]
+[ext_resource type="AudioStream" uid="uid://d4apcbwtdygve" path="res://audio/sounds/game_paused.ogg" id="29_aqooc"]
+[ext_resource type="AudioStream" uid="uid://bl6j7crwobxbs" path="res://audio/sounds/whoosh.mp3" id="30_oh644"]
+[ext_resource type="AudioStream" uid="uid://bkw0wdrg4orrn" path="res://audio/sounds/swoosh.mp3" id="32_j6242"]
+[ext_resource type="AudioStream" uid="uid://dkusyyfp6o8e0" path="res://audio/sounds/ui_menu_exit_02.ogg" id="33_x61wh"]
+
+[node name="Audio" type="Node"]
+process_mode = 3
+script = ExtResource("1_pbnfu")
+
+[node name="GameCabinetCompleteJingles" type="Node" parent="."]
+
+[node name="GameNextCabinet1" type="AudioStreamPlayer" parent="GameCabinetCompleteJingles"]
+stream = ExtResource("6_po70d")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="GameNextCabinet2" type="AudioStreamPlayer" parent="GameCabinetCompleteJingles"]
+stream = ExtResource("5_3kgia")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="GameNextCabinet3" type="AudioStreamPlayer" parent="GameCabinetCompleteJingles"]
+stream = ExtResource("9_s63g4")
+volume_db = -31.818
+bus = &"UISound"
+
+[node name="GameNextCabinet4" type="AudioStreamPlayer" parent="GameCabinetCompleteJingles"]
+stream = ExtResource("5_sfdl3")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="FlipperUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rn0fl")
+volume_db = -44.0
+bus = &"GameSound"
+
+[node name="FlipperDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qeyuw")
+volume_db = -44.0
+bus = &"GameSound"
+
+[node name="BlockUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yoe3s")
+volume_db = -35.0
+bus = &"GameSound"
+
+[node name="BlockDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mb8km")
+volume_db = -45.0
+bus = &"GameSound"
+
+[node name="Arcade1Startup1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_hypcw")
+volume_db = -27.273
+bus = &"UISound"
+
+[node name="Arcade1Startup2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_8tq14")
+volume_db = -31.818
+bus = &"UISound"
+
+[node name="ArcadeComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_6sft8")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="GameResetCabinet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pok74")
+volume_db = -27.273
+bus = &"UISound"
+
+[node name="GameStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_ur6k8")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="GamePaused" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_aqooc")
+volume_db = -33.058
+bus = &"UISound"
+
+[node name="UIButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_gulgy")
+volume_db = -34.545
+bus = &"UISound"
+
+[node name="UIButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_r4tbg")
+volume_db = -38.182
+bus = &"UISound"
+
+[node name="UIMenuExit1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_x61wh")
+volume_db = -18.182
+bus = &"UISound"
+
+[node name="UIMenuExit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_tb0o2")
+volume_db = -36.364
+bus = &"UISound"
+
+[node name="UIOptionToggle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ruewi")
+volume_db = -31.818
+mix_target = 2
+bus = &"UISound"
+
+[node name="UIMenuEnter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_tb0o2")
+volume_db = -32.727
+bus = &"UISound"
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_oh644")
+volume_db = -34.545
+bus = &"UISound"
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_j6242")
+volume_db = -34.545
+bus = &"UISound"
+
+[node name="MainMenuTrans" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_oh644")
+volume_db = -42.0
+bus = &"UISound"
+
+[node name="LetterSpin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_siyyu")
+volume_db = -43.0
+bus = &"UISound"

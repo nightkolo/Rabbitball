@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://pxr18h713ein"]
+
+[ext_resource type="Texture2D" uid="uid://d2qbi0wjqr6fx" path="res://assets/interface/logo-beta.png" id="1_mu6yl"]
+[ext_resource type="Script" path="res://menus/animators/anim_logo.gd" id="2_qxou3"]
+
+[node name="Logo" type="TextureRect"]
+self_modulate = Color(1, 1, 0.8, 1)
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(480, 127)
+size_flags_horizontal = 4
+texture = ExtResource("1_mu6yl")
+stretch_mode = 2
+script = ExtResource("2_qxou3")

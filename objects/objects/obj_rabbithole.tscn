@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc842wyjmfqj1"]
+
+[ext_resource type="Script" path="res://objects/scripts/obj_rabbithole.gd" id="1_tppnf"]
+[ext_resource type="Texture2D" uid="uid://gq4in0iwep1k" path="res://assets/objects/rabbithole.png" id="2_6e3kd"]
+[ext_resource type="Texture2D" uid="uid://bsshqi4jxeysi" path="res://assets/objects/rabbithole-arrow-01.png" id="3_ttnrc"]
+[ext_resource type="AudioStream" uid="uid://dysnqithohgty" path="res://audio/sfx/rabbithole_out.ogg" id="4_2odp5"]
+[ext_resource type="AudioStream" uid="uid://4wbk5u6p60uf" path="res://audio/sfx/rabbithole_in.ogg" id="5_ajakn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3fhj"]
+
+[node name="Rabbithole" type="Area2D"]
+script = ExtResource("1_tppnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e3fhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6e3kd")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ttnrc")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Out" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_2odp5")
+volume_db = -14.423
+bus = &"GameSound"
+
+[node name="In" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_ajakn")
+volume_db = -14.423
+bus = &"GameSound"

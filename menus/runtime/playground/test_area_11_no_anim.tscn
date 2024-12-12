@@ -1,0 +1,454 @@
+[gd_scene load_steps=36 format=3 uid="uid://ex4rv48qvdxd"]
+
+[ext_resource type="Texture2D" uid="uid://h3ks3046f84u" path="res://assets/backgrounds/bg-arcade1.png" id="1_lh7aq"]
+[ext_resource type="Texture2D" uid="uid://bo78gdgjj4fo1" path="res://assets/objects/bumper-2x2-01.png" id="3_3c2du"]
+[ext_resource type="Script" path="res://objects/deco/test-trail.gd" id="3_toigi"]
+[ext_resource type="Texture2D" uid="uid://dxegfbxy3l16n" path="res://assets/objects/launcher-spring-grey-1x1.png" id="4_8d6ni"]
+[ext_resource type="Texture2D" uid="uid://cfo2iqhe5s6nj" path="res://assets/objects/bumper-15x15-01.png" id="4_xpn7b"]
+[ext_resource type="Texture2D" uid="uid://cuwd2aykhk7dg" path="res://assets/objects/launcher-head-r1.png" id="5_kalb2"]
+[ext_resource type="Texture2D" uid="uid://c3onyf3r1y2du" path="res://assets/objects/bumper-2x2-02.png" id="5_wrxte"]
+[ext_resource type="Texture2D" uid="uid://bkgo5s4kj7oyi" path="res://assets/objects/button-1x1-r3.png" id="6_70o2a"]
+[ext_resource type="Texture2D" uid="uid://blkjw8e1vj73j" path="res://assets/objects/bumper-15x15-02.png" id="6_hlkmx"]
+[ext_resource type="Texture2D" uid="uid://cnvhaimk3bdnc" path="res://assets/interface/rabbitstar.png" id="6_jb8g7"]
+[ext_resource type="Texture2D" uid="uid://dijni352a1mup" path="res://assets/objects/door-cross-1x2.png" id="7_a68d0"]
+[ext_resource type="Texture2D" uid="uid://c4pilrllakm06" path="res://assets/objects/bunnyball-idle-01.png" id="7_c3teu"]
+[ext_resource type="Texture2D" uid="uid://dv457r0o1b0j0" path="res://assets/objects/door-ringer-1x2.png" id="8_r23ik"]
+[ext_resource type="Texture2D" uid="uid://bc2tbg63h5syc" path="res://assets/objects/bunnyball-idle-02.png" id="8_xnspr"]
+[ext_resource type="Texture2D" uid="uid://bcw7idg4hpl6i" path="res://assets/objects/rabbitball-happy-01.png" id="9_2djb7"]
+[ext_resource type="Texture2D" uid="uid://cg4iwnrl5iny0" path="res://assets/objects/flipper-rotator-base.png" id="10_6jiba"]
+[ext_resource type="Texture2D" uid="uid://dhg4x6bneuxo" path="res://assets/objects/rabbitball-happy-03.png" id="10_hh87c"]
+[ext_resource type="Texture2D" uid="uid://bh0ldlijt5yql" path="res://assets/objects/rabbitball-idle-01.png" id="11_dhf1o"]
+[ext_resource type="Texture2D" uid="uid://crp627q7njb2o" path="res://assets/objects/flipper-rotator-head-5x1.png" id="11_uxb3a"]
+[ext_resource type="Texture2D" uid="uid://b6k3vg1ym14og" path="res://assets/objects/flipper-rotator-scissor-2x2.png" id="14_mp7dq"]
+[ext_resource type="Texture2D" uid="uid://cqndidklow41r" path="res://assets/objects/flipper-2x1-02.png" id="15_j1duf"]
+[ext_resource type="Texture2D" uid="uid://dnc74s43lb64n" path="res://assets/objects/flipper-rotator-scissor-3x3.png" id="15_w0lm4"]
+[ext_resource type="Texture2D" uid="uid://cgtb52lcw7bjo" path="res://assets/objects/flipper-1x2-one-sided.png" id="17_0j5nb"]
+[ext_resource type="Texture2D" uid="uid://di72ol74rc30h" path="res://assets/objects/flipper-slopeddown-sloped-left-1x2.png" id="19_v2sed"]
+[ext_resource type="Texture2D" uid="uid://b6pv4bl4lwdma" path="res://assets/objects/flipper-slopeddown-1x2-r2.png" id="20_3ajcd"]
+[ext_resource type="Texture2D" uid="uid://blgdxmlrvdypl" path="res://assets/objects/launcher-spring-grey-1x075.png" id="21_pxx5p"]
+[ext_resource type="Texture2D" uid="uid://kbe4he0nby0f" path="res://assets/objects/rabbitball-dizzy-01.png" id="22_77bgc"]
+[ext_resource type="Texture2D" uid="uid://bn4ogk8rbdhd8" path="res://assets/objects/rabbitball-happy-02.png" id="25_roy5p"]
+[ext_resource type="Texture2D" uid="uid://dajqdjf3mxs81" path="res://assets/objects/rabbitball-happy-04.png" id="27_txdau"]
+[ext_resource type="Texture2D" uid="uid://6geiny7chbe" path="res://assets/interface/rabbitstar-03.png" id="31_7g8o6"]
+[ext_resource type="Texture2D" uid="uid://b5byo65so5a4e" path="res://assets/objects/flipper-ro-1x5-r2.png" id="32_n2ysq"]
+[ext_resource type="Texture2D" uid="uid://ottwxjwkd8tu" path="res://assets/objects/flipper-block-2x1.png" id="33_fndn1"]
+[ext_resource type="Texture2D" uid="uid://b3717p1b7g7pk" path="res://assets/objects/flipper-block-1x1.png" id="34_v1i1i"]
+
+[sub_resource type="Curve" id="Curve_k75gi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgd07"]
+font_size = 28
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_offset = Vector2(3, 3)
+
+[node name="TC" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0.501407, 0.501406, 0.501406, 1)
+z_index = -10
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lh7aq")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Trail" type="Line2D" parent="."]
+top_level = true
+width = 20.0
+width_curve = SubResource("Curve_k75gi")
+default_color = Color(1, 1, 1, 0.5)
+script = ExtResource("3_toigi")
+
+[node name="Bumper-2x2-01" type="Sprite2D" parent="."]
+position = Vector2(149.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_3c2du")
+
+[node name="Bumper-15x15-01" type="Sprite2D" parent="."]
+position = Vector2(245.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xpn7b")
+
+[node name="Bumper-2x2-02" type="Sprite2D" parent="."]
+position = Vector2(341.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_wrxte")
+
+[node name="Bumper-15x15-02" type="Sprite2D" parent="."]
+position = Vector2(437.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hlkmx")
+
+[node name="Star-r1" type="Sprite2D" parent="."]
+position = Vector2(732.75, 120.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_jb8g7")
+
+[node name="Button-1x1-r3" type="Sprite2D" parent="."]
+position = Vector2(528, 516)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_70o2a")
+
+[node name="Door-cross-1x2" type="Sprite2D" parent="."]
+position = Vector2(531, 603)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_a68d0")
+
+[node name="Flipper-2x1-r2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.5, 0.5, 1)
+position = Vector2(413, 567)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_j1duf")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Flipper-2x1-r2"]
+position = Vector2(54, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-rot-base-r3" type="Sprite2D" parent="."]
+position = Vector2(215.5, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_6jiba")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Flipper-rot-base-r3"]
+position = Vector2(1, 0.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-rot-head-5x1-r3" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(215.5, 450)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_uxb3a")
+
+[node name="Flipper-rotator-scissor-2x2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.5, 0.5, 1)
+position = Vector2(591.75, 272.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_mp7dq")
+
+[node name="Flipper-rotator-scissor-3x3" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(735.75, 272.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_w0lm4")
+
+[node name="Launcher-spring-1x1" type="Sprite2D" parent="."]
+position = Vector2(745.5, 477.75)
+texture = ExtResource("4_8d6ni")
+
+[node name="Launcher-head" type="Sprite2D" parent="."]
+position = Vector2(745.5, 429.75)
+texture = ExtResource("5_kalb2")
+
+[node name="Bunnyball-idle-01" type="Sprite2D" parent="."]
+position = Vector2(240, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_c3teu")
+
+[node name="Bunnyball-idle-02" type="Sprite2D" parent="."]
+position = Vector2(336, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_xnspr")
+
+[node name="Flipper-1x2-one-sided" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(314, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_0j5nb")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Flipper-1x2-one-sided"]
+position = Vector2(-12, 0.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-slopeddown-sloped-left-1x2" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(218, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_v2sed")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Flipper-slopeddown-sloped-left-1x2"]
+position = Vector2(2, -57.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-slopeddown-1x2-r2" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(122, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_3ajcd")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Flipper-slopeddown-1x2-r2"]
+position = Vector2(0, -57.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Launcher-spring-1x075" type="Sprite2D" parent="."]
+position = Vector2(605.5, 496.25)
+texture = ExtResource("21_pxx5p")
+
+[node name="Launcher-spring-1x2" type="Sprite2D" parent="."]
+position = Vector2(663, 479)
+texture = ExtResource("4_8d6ni")
+
+[node name="Rabbitball-dizzy-01" type="Sprite2D" parent="."]
+position = Vector2(528, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_77bgc")
+
+[node name="Rabbitball-happy-01" type="Sprite2D" parent="."]
+position = Vector2(144, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2djb7")
+
+[node name="Rabbitball-idle-01" type="Sprite2D" parent="."]
+position = Vector2(144, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_dhf1o")
+
+[node name="Rabbitball-happy-02" type="Sprite2D" parent="."]
+position = Vector2(240, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_roy5p")
+
+[node name="Rabbitball-happy-03" type="Sprite2D" parent="."]
+position = Vector2(336, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_hh87c")
+
+[node name="Rabbitball-happy-04" type="Sprite2D" parent="."]
+position = Vector2(432, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("27_txdau")
+
+[node name="Door-ringer-1x2" type="Sprite2D" parent="."]
+position = Vector2(607, 603)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_r23ik")
+
+[node name="Star-r2" type="Sprite2D" parent="."]
+position = Vector2(595.75, 133)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_7g8o6")
+
+[node name="Flipper-ro-1x5-r2" type="Sprite2D" parent="."]
+position = Vector2(-177, 344)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_n2ysq")
+
+[node name="Flipper-block-2x1" type="Sprite2D" parent="."]
+position = Vector2(713, 579)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_fndn1")
+
+[node name="Flipper-block-2x2" type="Sprite2D" parent="."]
+position = Vector2(738, 642)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_v1i1i")
+
+[node name="Flipper-ro-1x5-r3" type="Sprite2D" parent="."]
+position = Vector2(371, 506.25)
+rotation = -0.212888
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_n2ysq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 361.0
+offset_top = 600.0
+offset_right = 525.0
+offset_bottom = 693.0
+text = ":)
+Night Kolo"
+label_settings = SubResource("LabelSettings_fgd07")
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0.5)
+z_index = -1
+position = Vector2(4, 14)
+
+[node name="Bumper-2x2-03" type="Sprite2D" parent="Node2D"]
+position = Vector2(150.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_3c2du")
+
+[node name="Bumper-15x15-03" type="Sprite2D" parent="Node2D"]
+position = Vector2(246.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xpn7b")
+
+[node name="Bumper-2x2-04" type="Sprite2D" parent="Node2D"]
+position = Vector2(342.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_wrxte")
+
+[node name="Bumper-15x15-04" type="Sprite2D" parent="Node2D"]
+position = Vector2(438.25, 148.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hlkmx")
+
+[node name="Star-r3" type="Sprite2D" parent="Node2D"]
+position = Vector2(733.75, 120.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_jb8g7")
+
+[node name="Button-1x1-r4" type="Sprite2D" parent="Node2D"]
+position = Vector2(529, 516)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_70o2a")
+
+[node name="Door-cross-1x3" type="Sprite2D" parent="Node2D"]
+position = Vector2(532, 603)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_a68d0")
+
+[node name="Flipper-2x1-r3" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(1, 0.5, 0.5, 1)
+position = Vector2(414, 567)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_j1duf")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Node2D/Flipper-2x1-r3"]
+position = Vector2(54, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-rot-base-r4" type="Sprite2D" parent="Node2D"]
+position = Vector2(216.5, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_6jiba")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Node2D/Flipper-rot-base-r4"]
+position = Vector2(1, 0.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-rot-head-5x1-r4" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(216.5, 450)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_uxb3a")
+
+[node name="Flipper-rotator-scissor-2x3" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(1, 0.5, 0.5, 1)
+position = Vector2(592.75, 272.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_mp7dq")
+
+[node name="Flipper-rotator-scissor-3x4" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(736.75, 272.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_w0lm4")
+
+[node name="Launcher-spring-1x3" type="Sprite2D" parent="Node2D"]
+position = Vector2(746.5, 477.75)
+texture = ExtResource("4_8d6ni")
+
+[node name="Launcher-head2" type="Sprite2D" parent="Node2D"]
+position = Vector2(746.5, 429.75)
+texture = ExtResource("5_kalb2")
+
+[node name="Bunnyball-idle-03" type="Sprite2D" parent="Node2D"]
+position = Vector2(241, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_c3teu")
+
+[node name="Bunnyball-idle-04" type="Sprite2D" parent="Node2D"]
+position = Vector2(337, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_xnspr")
+
+[node name="Flipper-1x2-one-sided2" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(315, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_0j5nb")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Node2D/Flipper-1x2-one-sided2"]
+position = Vector2(-12, 0.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-slopeddown-sloped-left-1x3" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(219, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_v2sed")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Node2D/Flipper-slopeddown-sloped-left-1x3"]
+position = Vector2(2, -57.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Flipper-slopeddown-1x2-r3" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(0.5, 1, 1, 1)
+position = Vector2(123, 591)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_3ajcd")
+
+[node name="Flipper-pointer-01" type="Sprite2D" parent="Node2D/Flipper-slopeddown-1x2-r3"]
+position = Vector2(0, -57.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Launcher-spring-1x076" type="Sprite2D" parent="Node2D"]
+position = Vector2(606.5, 496.25)
+texture = ExtResource("21_pxx5p")
+
+[node name="Launcher-spring-1x4" type="Sprite2D" parent="Node2D"]
+position = Vector2(664, 479)
+texture = ExtResource("4_8d6ni")
+
+[node name="Rabbitball-dizzy-02" type="Sprite2D" parent="Node2D"]
+position = Vector2(529, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_77bgc")
+
+[node name="Rabbitball-happy-05" type="Sprite2D" parent="Node2D"]
+position = Vector2(145, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2djb7")
+
+[node name="Rabbitball-idle-02" type="Sprite2D" parent="Node2D"]
+position = Vector2(145, 279.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_dhf1o")
+
+[node name="Rabbitball-happy-06" type="Sprite2D" parent="Node2D"]
+position = Vector2(241, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_roy5p")
+
+[node name="Rabbitball-happy-07" type="Sprite2D" parent="Node2D"]
+position = Vector2(337, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_hh87c")
+
+[node name="Rabbitball-happy-08" type="Sprite2D" parent="Node2D"]
+position = Vector2(433, 375.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("27_txdau")
+
+[node name="Door-ringer-1x3" type="Sprite2D" parent="Node2D"]
+position = Vector2(608, 603)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_r23ik")
+
+[node name="Star-r4" type="Sprite2D" parent="Node2D"]
+position = Vector2(596.75, 133)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_7g8o6")
+
+[node name="Flipper-ro-1x5-r4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-176, 344)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_n2ysq")
+
+[node name="Flipper-block-2x3" type="Sprite2D" parent="Node2D"]
+position = Vector2(714, 579)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_fndn1")
+
+[node name="Flipper-block-2x4" type="Sprite2D" parent="Node2D"]
+position = Vector2(739, 642)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_v1i1i")
+
+[node name="Flipper-ro-1x5-r5" type="Sprite2D" parent="Node2D"]
+position = Vector2(372, 506.25)
+rotation = -0.212888
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_n2ysq")

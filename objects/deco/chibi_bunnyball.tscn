@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://hcdv72b6rff5"]
+
+[ext_resource type="Texture2D" uid="uid://duirdcrwk6um0" path="res://assets/objects/bunnyball-chibi.png" id="1_u4hxp"]
+[ext_resource type="Script" path="res://objects/scripts/world/bunnyball_chibi.gd" id="1_viog2"]
+
+[node name="ChibiBunnyball" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_u4hxp")
+offset = Vector2(0, -10)
+script = ExtResource("1_viog2")

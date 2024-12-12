@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfermxqap2dfl"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_4wete"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="2_wbxt3"]
+[ext_resource type="Texture2D" uid="uid://gkgioqarr4n8" path="res://assets/world/platform-texture-w1-r2.png" id="3_dfgko"]
+[ext_resource type="PackedScene" uid="uid://d21bcxepho06n" path="res://objects/world/info_bubble_text.tscn" id="3_tn7nn"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/dialog_spawner.gd" id="4_k25yv"]
+[ext_resource type="Texture2D" uid="uid://c07schi8nq8tc" path="res://assets/world/info-bubble-arrow-01-r2.png" id="6_7kuhq"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_4wete")
+
+[node name="BG" parent="." instance=ExtResource("2_wbxt3")]
+self_modulate = Color(0.5, 1, 1, 1)
+texture = ExtResource("3_dfgko")
+
+[node name="InfoBubble" parent="." instance=ExtResource("3_tn7nn")]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(450, 360)
+script = ExtResource("4_k25yv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_7kuhq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(450, 360)
+zoom = Vector2(1.16, 1.16)

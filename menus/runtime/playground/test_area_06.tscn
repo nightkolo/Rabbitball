@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpjvgruutvfas"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/cabinet.gd" id="1_lfftw"]
+[ext_resource type="PackedScene" uid="uid://bs43edabl4355" path="res://menus/runtime/ui/misc/dev_ui.tscn" id="2_31nst"]
+[ext_resource type="PackedScene" uid="uid://yvs43asj7g57" path="res://menus/runtime/ui/misc/ui_display.tscn" id="2_c7pg6"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="2_sonic"]
+[ext_resource type="Script" path="res://objects/scripts/game/spawnpoint.gd" id="3_0dp58"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="4_7xg0b"]
+[ext_resource type="PackedScene" uid="uid://d0w6k4f8fpi0r" path="res://objects/objects/obj_bumper_2x2.tscn" id="5_ibl5s"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="6_tlrty"]
+[ext_resource type="PackedScene" uid="uid://cre2wu8kxlbdw" path="res://objects/world/platform-outline.tscn" id="7_3n7mb"]
+[ext_resource type="Script" path="res://objects/scripts/game/cabinet_trans_cam.gd" id="9_agpt0"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="10_jaxg0"]
+[ext_resource type="PackedScene" uid="uid://dupwcjoc87acb" path="res://objects/objects/obj_bumper_15x15.tscn" id="11_24oi6"]
+
+[node name="TC" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_lfftw")
+level_name = &"test"
+level_id = 1005
+
+[node name="UI" parent="." instance=ExtResource("2_c7pg6")]
+
+[node name="CabinetPositioner" type="Node2D" parent="."]
+script = ExtResource("9_agpt0")
+
+[node name="Cam" parent="CabinetPositioner" instance=ExtResource("10_jaxg0")]
+
+[node name="DevUI" parent="." instance=ExtResource("2_31nst")]
+
+[node name="BG" parent="." instance=ExtResource("2_sonic")]
+
+[node name="Spawnpoint" type="Marker2D" parent="."]
+position = Vector2(481, 264)
+script = ExtResource("3_0dp58")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+script = ExtResource("4_7xg0b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(0, 0, 168, 0, 168, 480, 336, 576, 696, 576, 816, 480, 816, 0, 912, 0, 912, 720, 0, 720)
+
+[node name="Texture" parent="Platform" instance=ExtResource("6_tlrty")]
+polygon = PackedVector2Array(0, 0, 168, 0, 168, 480, 336, 576, 696, 576, 816, 480, 816, 0, 912, 0, 912, 720, 0, 720)
+
+[node name="Outline" parent="Platform/Texture" instance=ExtResource("7_3n7mb")]
+points = PackedVector2Array(168, 0, 168, 480, 336, 576, 696, 576, 816, 480, 816, 0)
+
+[node name="Bumper" parent="." instance=ExtResource("5_ibl5s")]
+position = Vector2(456, 552)
+
+[node name="Bumper2" parent="." instance=ExtResource("11_24oi6")]
+position = Vector2(360, 552)

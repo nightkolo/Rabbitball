@@ -1,0 +1,196 @@
+[gd_scene load_steps=14 format=3 uid="uid://wv2pvfsepj3g"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_2avai"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_5w41a"]
+[ext_resource type="PackedScene" uid="uid://co5bnd6j4rkny" path="res://menus/runtime/playground/test_area_18_pinball.tscn" id="2_o3avt"]
+[ext_resource type="Script" path="res://menus/interactors/menu_credits.gd" id="2_w1dmy"]
+[ext_resource type="FontVariation" uid="uid://heagb3fp3pwg" path="res://resources/theme/font_variation_credit_roles.tres" id="3_2yfnm"]
+[ext_resource type="FontVariation" uid="uid://bfrw4r3sgtqui" path="res://resources/theme/font_variation_back_to_title.tres" id="3_q5nus"]
+[ext_resource type="FontFile" uid="uid://d3ejiuvas82sx" path="res://assets/addons/fonts/Rabbitfont-Bold.ttf" id="4_eq0rp"]
+[ext_resource type="LabelSettings" uid="uid://b0rd4iooibs58" path="res://resources/theme/label_credits_author.tres" id="4_l04cq"]
+[ext_resource type="LabelSettings" uid="uid://cmvduvyjtsncx" path="res://resources/theme/label_credits_names.tres" id="5_x1wcf"]
+[ext_resource type="LabelSettings" uid="uid://cakab7kqimgvg" path="res://resources/theme/label_credit_roles.tres" id="5_yshhv"]
+[ext_resource type="Script" path="res://menus/animators/anim_credits_letter.gd" id="6_sucbp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4fcm"]
+font = ExtResource("4_eq0rp")
+font_size = 28
+font_color = Color(1, 0.4, 1, 1)
+outline_size = 3
+outline_color = Color(1, 0.4, 1, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="FontVariation" id="FontVariation_71jiu"]
+
+[node name="CreditsMenu" type="Control" groups=["MenuScreen"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_w1dmy")
+
+[node name="Cabinet" parent="." instance=ExtResource("2_o3avt")]
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2avai")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="AuthorCredit" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2yfnm")
+text = "Programming, Art, SFX and Level Design by:"
+label_settings = ExtResource("5_yshhv")
+horizontal_alignment = 1
+
+[node name="Me" type="HBoxContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Letter" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "N"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter2" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "i"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter3" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "g"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter4" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "h"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter5" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "t"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter6" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = " "
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter7" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "K"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter8" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "o"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter9" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "l"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="Letter10" type="Label" parent="Main/VBoxContainer/Me"]
+layout_mode = 2
+text = "o
+"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+script = ExtResource("6_sucbp")
+
+[node name="MeStatic" type="Label" parent="Main/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Night Kolo"
+label_settings = ExtResource("4_l04cq")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = -3
+
+[node name="Thanks" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2yfnm")
+text = "Special Thanks:"
+label_settings = ExtResource("5_yshhv")
+horizontal_alignment = 1
+
+[node name="Kenney" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kenney.nl"
+label_settings = SubResource("LabelSettings_p4fcm")
+horizontal_alignment = 1
+
+[node name="Emigo" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Emigo"
+label_settings = ExtResource("5_x1wcf")
+horizontal_alignment = 1
+
+[node name="YSY" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_71jiu")
+text = "YoStarYeahya"
+label_settings = ExtResource("5_x1wcf")
+horizontal_alignment = 1
+
+[node name="Zach" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_71jiu")
+text = "Zach"
+label_settings = ExtResource("5_x1wcf")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="BackButton" type="Button" parent="Main/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_q5nus")
+text = "(esc) Back to
+Title"
+script = ExtResource("2_5w41a")

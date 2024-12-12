@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm8flbuh3xf5f"]
+
+[ext_resource type="Texture2D" uid="uid://b1uh5k32rud1n" path="res://assets/world/one-way-platform-texture.png" id="1_w2tum"]
+
+[node name="Texture" type="Polygon2D"]
+self_modulate = Color(0.5, 0.4, 0.5, 0.75)
+clip_children = 2
+texture = ExtResource("1_w2tum")
+texture_scale = Vector2(4, 4)
+metadata/_edit_lock_ = true

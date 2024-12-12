@@ -1,0 +1,222 @@
+[gd_scene load_steps=14 format=3 uid="uid://cv6l00hfmbo00"]
+
+[ext_resource type="Script" path="res://objects/scripts/obj_anim_launcher.gd" id="1_wtnaj"]
+[ext_resource type="Script" path="res://objects/deco/launcher-trail.gd" id="3_ps6kx"]
+[ext_resource type="Texture2D" uid="uid://dirs2dd5eu157" path="res://assets/objects/launcher-head.png" id="4_s7jf2"]
+[ext_resource type="Texture2D" uid="uid://bwqh6m3b6dqbu" path="res://assets/objects/launcher-pointer-01.png" id="5_ipapo"]
+[ext_resource type="Texture2D" uid="uid://d0d3lllsh3b1j" path="res://assets/objects/launcher-spring-1x1.png" id="6_t03ax"]
+[ext_resource type="Texture2D" uid="uid://kcqqpgxtxfgd" path="res://assets/world/particle_rabbitstar_02.png" id="7_7g1rp"]
+[ext_resource type="Curve" uid="uid://nvtuhrdw7lfx" path="res://resources/launcher_dust_particle_scale.tres" id="8_0oawb"]
+[ext_resource type="Gradient" uid="uid://bhv5rtvnqecvx" path="res://resources/flashy_particle_color.tres" id="9_iew7x"]
+
+[sub_resource type="Animation" id="Animation_1m61e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 11)]
+}
+
+[sub_resource type="Animation" id="Animation_s082k"]
+resource_name = "charge_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 11), Vector2(24, 35)]
+}
+
+[sub_resource type="Animation" id="Animation_w1xy7"]
+resource_name = "launch_full"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(0.5, 0.2), Vector2(0.5, 0.675), Vector2(0.5, 0.335), Vector2(0.5, 0.58), Vector2(0.5, 0.42), Vector2(0.5, 0.542), Vector2(0.5, 0.458), Vector2(0.5, 0.521), Vector2(0.5, 0.484), Vector2(0.5, 0.511), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(24, 40), Vector2(24, -6), Vector2(24, 27), Vector2(24, 3), Vector2(24, 19), Vector2(24, 7), Vector2(24, 15), Vector2(24, 9), Vector2(24, 13), Vector2(24, 10), Vector2(24, 11)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_particles"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e7877"]
+resource_name = "launch_half"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(0.5, 0.35), Vector2(0.5, 0.587), Vector2(0.5, 0.418), Vector2(0.5, 0.54), Vector2(0.5, 0.46), Vector2(0.5, 0.521), Vector2(0.5, 0.479), Vector2(0.5, 0.511), Vector2(0.5, 0.492), Vector2(0.5, 0.506), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(24, 25), Vector2(24, 2), Vector2(24, 19), Vector2(24, 7), Vector2(24, 15), Vector2(24, 9), Vector2(24, 13), Vector2(24, 10), Vector2(24, 12), Vector2(24, 10.5), Vector2(24, 11)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_particles"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thog1"]
+_data = {
+"RESET": SubResource("Animation_1m61e"),
+"charge_up": SubResource("Animation_s082k"),
+"launch_full": SubResource("Animation_w1xy7"),
+"launch_half": SubResource("Animation_e7877")
+}
+
+[node name="Launcher" type="Node2D"]
+script = ExtResource("1_wtnaj")
+
+[node name="Trail" type="Line2D" parent="."]
+script = ExtResource("3_ps6kx")
+
+[node name="Head" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(24, 11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_s7jf2")
+
+[node name="PointerSprite" type="Sprite2D" parent="Head"]
+texture = ExtResource("5_ipapo")
+
+[node name="Spring" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(24, 59)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_t03ax")
+offset = Vector2(0, -47)
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_thog1")
+}
+autoplay = "RESET"
+
+[node name="ParticlesLeft" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.6)
+position = Vector2(11, 48)
+emitting = false
+amount = 2
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("7_7g1rp")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 20)
+direction = Vector2(-1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 300.0
+damping_max = 300.0
+scale_amount_curve = ExtResource("8_0oawb")
+color_ramp = ExtResource("9_iew7x")
+
+[node name="ParticlesRight" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.6)
+position = Vector2(37, 48)
+emitting = false
+amount = 2
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("7_7g1rp")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 20)
+direction = Vector2(1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 300.0
+damping_max = 300.0
+scale_amount_curve = ExtResource("8_0oawb")
+color_ramp = ExtResource("9_iew7x")

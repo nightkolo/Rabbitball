@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3smd13tjiltq"]
+
+[ext_resource type="Script" path="res://objects/scripts/game/cabinet_trans_cam.gd" id="1_mmrxb"]
+
+[node name="CabinetTransCam" type="Node2D"]
+script = ExtResource("1_mmrxb")

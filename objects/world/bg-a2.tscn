@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://lnm12sgkxt4m"]
+
+[ext_resource type="Texture2D" uid="uid://h3ks3046f84u" path="res://assets/backgrounds/bg-arcade1.png" id="1_ew0ld"]
+
+[node name="BG" type="Sprite2D"]
+self_modulate = Color(0.55, 0.55, 1, 1)
+z_index = -10
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ew0ld")
+centered = false
+metadata/_edit_lock_ = true

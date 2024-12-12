@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1x6corxnjnk7"]
+
+[ext_resource type="Texture2D" uid="uid://d2p31jtu10xsn" path="res://assets/objects/rabbitball-chibi.png" id="1_tdspw"]
+[ext_resource type="Script" path="res://objects/scripts/world/rabbitball_chibi.gd" id="2_2i0vk"]
+
+[node name="ChibiRabbitball" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_tdspw")
+offset = Vector2(0, -20)
+script = ExtResource("2_2i0vk")

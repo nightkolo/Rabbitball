@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://chqi5wtj8qrio"]
+
+[ext_resource type="Texture2D" uid="uid://dt442iq0lmmlh" path="res://assets/backgrounds/bg-test-area.png" id="1_od75q"]
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_u2uo7"]
+[ext_resource type="PackedScene" uid="uid://cf6m0icfyaxxb" path="res://objects/world/infopoint.tscn" id="2_oi40u"]
+[ext_resource type="PackedScene" uid="uid://bp0jrvm6opoqd" path="res://objects/world/infopoint_normal.tscn" id="4_p8skl"]
+[ext_resource type="Texture2D" uid="uid://cf6gdi3as85xt" path="res://assets/world/infopoint.png" id="5_0doo2"]
+[ext_resource type="PackedScene" uid="uid://b3fb24dq1xkwt" path="res://objects/objects/rabbitball.tscn" id="5_gfd1i"]
+[ext_resource type="Texture2D" uid="uid://cwmdte45pf5bt" path="res://assets/world/infopoint-information.png" id="6_p4g7w"]
+[ext_resource type="Texture2D" uid="uid://fjawh1frdy6m" path="res://assets/objects/wolfball-happy-01.png" id="8_dd8p7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yyibg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5p6j"]
+font_size = 28
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_offset = Vector2(3, 3)
+
+[node name="TA" type="Node2D"]
+script = ExtResource("1_u2uo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.75, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_od75q")
+centered = false
+
+[node name="Info" parent="." instance=ExtResource("2_oi40u")]
+visible = false
+position = Vector2(450, 360)
+tutorial_text = "Thank you for
+69 followers!
+(and Counting!)"
+
+[node name="InfoN" parent="." node_paths=PackedStringArray("area_to_open") instance=ExtResource("4_p8skl")]
+position = Vector2(450, 360)
+area_to_open = NodePath("../Area2D")
+bubble_text = "Thank you for
+69 followers!
+(and Counting!)"
+
+[node name="Arrow" type="Node2D" parent="InfoN"]
+
+[node name="BG" type="Sprite2D" parent="InfoN/Arrow"]
+self_modulate = Color(0.423651, 0.423651, 0.423651, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_0doo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="InfoN/Arrow"]
+position = Vector2(0, 21.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_p4g7w")
+offset = Vector2(0, -42.5)
+
+[node name="RB" parent="." instance=ExtResource("5_gfd1i")]
+position = Vector2(-120, 72)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-120, 384)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yyibg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(450, 300)
+zoom = Vector2(1.8, 1.8)
+
+[node name="Wolfball-happy-01" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(360, 369)
+rotation = -0.197283
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_dd8p7")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.1)
+offset_left = 408.0
+offset_top = 384.0
+offset_right = 483.0
+offset_bottom = 465.0
+text = "...Nice"
+label_settings = SubResource("LabelSettings_l5p6j")

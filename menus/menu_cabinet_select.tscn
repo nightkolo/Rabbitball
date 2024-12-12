@@ -1,0 +1,274 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp23nlsnthudx"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_wkvlm"]
+[ext_resource type="Script" path="res://menus/interactors/menu_cabinet_select.gd" id="2_4low5"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_wsqpk"]
+[ext_resource type="LabelSettings" uid="uid://db22pofl4y0e2" path="res://resources/theme/label_arcade_select.tres" id="3_4gide"]
+[ext_resource type="FontVariation" uid="uid://bfrw4r3sgtqui" path="res://resources/theme/font_variation_back_to_title.tres" id="3_in7j7"]
+[ext_resource type="Script" path="res://menus/animators/anim_level_button.gd" id="4_k3e4y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vypwv"]
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(3, 3)
+
+[node name="MenuCabinetSelect" type="CanvasLayer" groups=["MenuScreen"]]
+script = ExtResource("2_4low5")
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wkvlm")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Select Cabinet"
+label_settings = SubResource("LabelSettings_vypwv")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Arcade1Label" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Arcade 1"
+label_settings = ExtResource("3_4gide")
+
+[node name="Arcade1CabinetsGridContainer" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnC1" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC5")
+focus_neighbor_top = NodePath("../../../../../VBoxContainer2/BackButton")
+focus_neighbor_right = NodePath("../BtnC2")
+focus_neighbor_bottom = NodePath("../BtnC6")
+text = " 1 "
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC2" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC1")
+focus_neighbor_top = NodePath("../../../../../VBoxContainer2/BackButton")
+focus_neighbor_right = NodePath("../BtnC3")
+focus_neighbor_bottom = NodePath("../BtnC7")
+text = " 2 "
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC3" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC2")
+focus_neighbor_top = NodePath("../../../../../VBoxContainer2/BackButton")
+focus_neighbor_right = NodePath("../BtnC4")
+focus_neighbor_bottom = NodePath("../BtnC8")
+text = " 3 "
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC4" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC3")
+focus_neighbor_top = NodePath("../../../../../VBoxContainer2/BackButton")
+focus_neighbor_right = NodePath("../BtnC5")
+focus_neighbor_bottom = NodePath("../BtnC9")
+text = " 4 "
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC5" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC4")
+focus_neighbor_top = NodePath("../../../../../VBoxContainer2/BackButton")
+focus_neighbor_right = NodePath("../BtnC1")
+focus_neighbor_bottom = NodePath("../BtnC10")
+text = " 5 "
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC6" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC10")
+focus_neighbor_top = NodePath("../BtnC1")
+focus_neighbor_right = NodePath("../BtnC7")
+focus_neighbor_bottom = NodePath("../../Arcade2CabinetsGridContainer/BtnC11")
+text = "6"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC7" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC6")
+focus_neighbor_top = NodePath("../BtnC2")
+focus_neighbor_right = NodePath("../BtnC8")
+focus_neighbor_bottom = NodePath("../../Arcade2CabinetsGridContainer/BtnC12")
+text = "7"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC8" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC7")
+focus_neighbor_top = NodePath("../BtnC3")
+focus_neighbor_right = NodePath("../BtnC9")
+focus_neighbor_bottom = NodePath("../../Arcade2CabinetsGridContainer/BtnC13")
+text = "8"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC9" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC8")
+focus_neighbor_top = NodePath("../BtnC4")
+focus_neighbor_right = NodePath("../BtnC10")
+focus_neighbor_bottom = NodePath("../../Arcade2CabinetsGridContainer/BtnC14")
+text = "9"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC10" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade1CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC9")
+focus_neighbor_top = NodePath("../BtnC5")
+focus_neighbor_right = NodePath("../BtnC6")
+focus_neighbor_bottom = NodePath("../../Arcade2CabinetsGridContainer/BtnC15")
+text = "10"
+script = ExtResource("4_k3e4y")
+
+[node name="Arcade2Label" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Arcade 2"
+label_settings = ExtResource("3_4gide")
+
+[node name="Arcade2CabinetsGridContainer" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnC11" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC15")
+focus_neighbor_top = NodePath("../../Arcade1CabinetsGridContainer/BtnC6")
+focus_neighbor_right = NodePath("../BtnC12")
+focus_neighbor_bottom = NodePath("../BtnC16")
+text = "11"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC12" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC11")
+focus_neighbor_top = NodePath("../../Arcade1CabinetsGridContainer/BtnC7")
+focus_neighbor_right = NodePath("../BtnC13")
+focus_neighbor_bottom = NodePath("../BtnC17")
+text = "12"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC13" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC12")
+focus_neighbor_top = NodePath("../../Arcade1CabinetsGridContainer/BtnC8")
+focus_neighbor_right = NodePath("../BtnC14")
+focus_neighbor_bottom = NodePath("../BtnC18")
+text = "13"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC14" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC13")
+focus_neighbor_top = NodePath("../../Arcade1CabinetsGridContainer/BtnC9")
+focus_neighbor_right = NodePath("../BtnC15")
+focus_neighbor_bottom = NodePath("../BtnC19")
+text = "14"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC15" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC14")
+focus_neighbor_top = NodePath("../../Arcade1CabinetsGridContainer/BtnC10")
+focus_neighbor_right = NodePath("../BtnC11")
+focus_neighbor_bottom = NodePath("../BtnC20")
+text = "15"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC16" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC20")
+focus_neighbor_top = NodePath("../BtnC11")
+focus_neighbor_right = NodePath("../BtnC17")
+text = "16"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC17" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC16")
+focus_neighbor_top = NodePath("../BtnC12")
+focus_neighbor_right = NodePath("../BtnC18")
+text = "17"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC18" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC17")
+focus_neighbor_top = NodePath("../BtnC13")
+focus_neighbor_right = NodePath("../BtnC19")
+text = "18"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC19" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC18")
+focus_neighbor_top = NodePath("../BtnC14")
+focus_neighbor_right = NodePath("../BtnC20")
+text = "19"
+script = ExtResource("4_k3e4y")
+
+[node name="BtnC20" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer/Arcade2CabinetsGridContainer" groups=["CabinetButton", "UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnC19")
+focus_neighbor_top = NodePath("../BtnC15")
+focus_neighbor_right = NodePath("../BtnC16")
+text = "20
+"
+script = ExtResource("4_k3e4y")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BackButton" type="Button" parent="Main/VBoxContainer2" groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_in7j7")
+text = "Back to
+Title"
+script = ExtResource("2_wsqpk")

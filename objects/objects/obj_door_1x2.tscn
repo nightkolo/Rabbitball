@@ -1,0 +1,279 @@
+[gd_scene load_steps=13 format=3 uid="uid://bh7q842qhtwqs"]
+
+[ext_resource type="Script" path="res://objects/scripts/obj_door.gd" id="1_biyef"]
+[ext_resource type="Texture2D" uid="uid://do185rtt77q5r" path="res://assets/objects/door-1x2-r3.png" id="2_eygx6"]
+[ext_resource type="Texture2D" uid="uid://bcp1l0ei2bcs8" path="res://assets/world/particle_circle_02.png" id="3_kkqcf"]
+[ext_resource type="Curve" uid="uid://bckcn8ttehs8l" path="res://resources/door_dust_particle_scale.tres" id="4_d0xnw"]
+[ext_resource type="AudioStream" uid="uid://uc2ksee7nlt0" path="res://audio/sfx/door-open.ogg" id="5_5gj1d"]
+[ext_resource type="AudioStream" uid="uid://db7f443bewfo0" path="res://audio/sfx/door-closed.ogg" id="6_0qpr2"]
+[ext_resource type="AudioStream" uid="uid://nd23510xtgc" path="res://audio/sfx/door-activated.wav" id="7_2l1hw"]
+
+[sub_resource type="Gradient" id="Gradient_ehoox"]
+offsets = PackedFloat32Array(0, 0.933333)
+colors = PackedColorArray(1, 1, 1, 0.3, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_88rac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33, 57)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Door:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3u5to"]
+resource_name = "off"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1.06, 1.06), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Color(0.6, 0.6, 0.6, 1), Color(1.15, 1.15, 1.15, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(24, 48), Vector2(35, 59), Vector2(33, 57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i6tc5"]
+resource_name = "on"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(100, 1, 0.5),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(0.868985, 0.868985, 0.868985, 1), Color(0.6, 0.6, 0.6, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(33, 57), Vector2(24, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_particles"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jt2x"]
+_data = {
+"RESET": SubResource("Animation_88rac"),
+"off": SubResource("Animation_3u5to"),
+"on": SubResource("Animation_i6tc5")
+}
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_biyef")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 48, 0, 48, 96, 0, 96)
+
+[node name="Door" type="Node2D" parent="."]
+position = Vector2(24, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eygx6")
+
+[node name="Shadow" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(33, 57)
+
+[node name="Sprite2D" type="Sprite2D" parent="Shadow"]
+self_modulate = Color(0, 0, 0, 0.5)
+z_index = -2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eygx6")
+
+[node name="ParticlesRight" type="CPUParticles2D" parent="."]
+position = Vector2(47, 70)
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_kkqcf")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 10)
+direction = Vector2(1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 500.0
+damping_max = 500.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_curve = ExtResource("4_d0xnw")
+color = Color(0.8, 0.8, 0.8, 1)
+color_ramp = SubResource("Gradient_ehoox")
+
+[node name="ParticlesLeft" type="CPUParticles2D" parent="."]
+position = Vector2(3, 71)
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_kkqcf")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 10)
+direction = Vector2(-1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 500.0
+damping_max = 500.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_curve = ExtResource("4_d0xnw")
+color = Color(0.8, 0.8, 0.8, 1)
+color_ramp = SubResource("Gradient_ehoox")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3jt2x")
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Close" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_5gj1d")
+volume_db = -80.0
+bus = &"GameSound"
+
+[node name="Open" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_0qpr2")
+volume_db = -80.0
+bus = &"GameSound"
+
+[node name="Activated" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_2l1hw")
+volume_db = -80.0
+bus = &"GameSound"

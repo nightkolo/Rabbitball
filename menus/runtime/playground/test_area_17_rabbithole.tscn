@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bx6l36n7jwlma"]
+
+[ext_resource type="Script" path="res://menus/runtime/scripts/world.gd" id="1_ppld4"]
+[ext_resource type="Script" path="res://menus/runtime/scripts/cabinet.gd" id="2_o82v5"]
+[ext_resource type="PackedScene" uid="uid://c3smd13tjiltq" path="res://objects/game/cabinet_trans_cam.tscn" id="2_quphv"]
+[ext_resource type="PackedScene" uid="uid://lnm12sgkxt4m" path="res://objects/world/bg-a2.tscn" id="3_e6xit"]
+[ext_resource type="PackedScene" uid="uid://crvhdomwxier6" path="res://objects/game/game_cam.tscn" id="3_hmv14"]
+[ext_resource type="PackedScene" uid="uid://daw6wrbsjioqo" path="res://objects/game/spawnpoint.tscn" id="4_i826o"]
+[ext_resource type="Script" path="res://objects/scripts/world/platform.gd" id="7_yw2bc"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/test_sub_cabinet.gd" id="8_uuje3"]
+[ext_resource type="Script" path="res://objects/scripts/obj_rabbithole.gd" id="9_1ms00"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jy6ly"]
+
+[node name="TA" type="Node2D"]
+script = ExtResource("1_ppld4")
+
+[node name="CabinetTransCam" parent="." instance=ExtResource("2_quphv")]
+
+[node name="Cam" parent="CabinetTransCam" instance=ExtResource("3_hmv14")]
+pan_to_ball = false
+
+[node name="Cabinet" type="Node2D" parent="."]
+script = ExtResource("2_o82v5")
+cabinet_id = 1
+
+[node name="BG" parent="Cabinet" instance=ExtResource("3_e6xit")]
+
+[node name="Spawnpoint" parent="Cabinet" instance=ExtResource("4_i826o")]
+position = Vector2(720, 72)
+
+[node name="Platform" type="StaticBody2D" parent="Cabinet"]
+script = ExtResource("7_yw2bc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabinet/Platform"]
+polygon = PackedVector2Array(768, 0, 912, 0, 912, 720, 528, 720, 528, 240, 576, 240, 576, 384, 768, 336)
+
+[node name="Platform2" type="StaticBody2D" parent="Cabinet"]
+script = ExtResource("7_yw2bc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabinet/Platform2"]
+polygon = PackedVector2Array(0, 0, 672, 0, 672, 264, 576, 288, 576, 240, 264, 240, 264, 168, 144, 168, 144, 480, 336, 480, 336, 384, 432, 384, 432, 720, 0, 720)
+
+[node name="SubCabinet" type="Node2D" parent="Cabinet" node_paths=PackedStringArray("platforms_to_remove")]
+position = Vector2(240, 144)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("8_uuje3")
+platforms_to_remove = [NodePath("../Platform"), NodePath("../Platform2")]
+
+[node name="Polygon2D" type="Polygon2D" parent="Cabinet/SubCabinet"]
+color = Color(0, 0, 0, 0.4)
+polygon = PackedVector2Array(-24, 0, 96, -48, 288, -48, 288, 120, 384, 120, 384, 336, 120, 336, 120, 192, -24, 192)
+
+[node name="Platform" type="StaticBody2D" parent="Cabinet/SubCabinet"]
+script = ExtResource("7_yw2bc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabinet/SubCabinet/Platform"]
+polygon = PackedVector2Array(-24, 0, 96, -48, 288, -48, 288, 0, 293.333, 133.333, 373.333, 133.333, 373.333, 160, 240, 186.667, 240, 0, 0, 24, 0, 168, 144, 168, 144, 288, 346.667, 266.667, 373.333, 266.667, 384, 336, 120, 336, 120, 192, -24, 192)
+disabled = true
+
+[node name="RabbitholeIn" type="Area2D" parent="Cabinet/SubCabinet"]
+position = Vector2(360, 216)
+script = ExtResource("9_1ms00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet/SubCabinet/RabbitholeIn"]
+position = Vector2(13.3333, -2.66666)
+shape = SubResource("CircleShape2D_jy6ly")
+
+[node name="RabbitholeOut" type="Area2D" parent="Cabinet/SubCabinet"]
+position = Vector2(0, 120)
+script = ExtResource("9_1ms00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabinet/SubCabinet/RabbitholeOut"]
+shape = SubResource("CircleShape2D_jy6ly")

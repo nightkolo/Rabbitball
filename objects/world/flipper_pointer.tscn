@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://df543wl0lrnur"]
+
+[ext_resource type="Script" path="res://objects/scripts/world/flipper_pointer.gd" id="1_1afi1"]
+[ext_resource type="Texture2D" uid="uid://b64i85k0d5frh" path="res://assets/objects/flipper-pointer-a-01.png" id="2_ujdgq"]
+[ext_resource type="Texture2D" uid="uid://cmyvsl5rf3fja" path="res://assets/objects/flipper-pointer-a-02.png" id="3_pp37m"]
+
+[node name="FlipperPointer" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_1afi1")
+
+[node name="Rest" type="Sprite2D" parent="."]
+texture = ExtResource("2_ujdgq")
+
+[node name="Held" type="Sprite2D" parent="."]
+rotation = -2.35619
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_pp37m")

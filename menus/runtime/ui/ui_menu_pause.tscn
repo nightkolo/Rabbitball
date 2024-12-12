@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsajs1gifgi2m"]
+
+[ext_resource type="Script" path="res://menus/runtime/ui/interactor/ui_menu_pause.gd" id="1_5h3my"]
+[ext_resource type="FontFile" uid="uid://cf3vhsrhm5kao" path="res://assets/addons/fonts/Rabbitfont-Black.ttf" id="1_5m4u7"]
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="2_minm2"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_rtkkj"]
+
+[node name="MenuPause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_5h3my")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35)
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_minm2")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PauseInfo" type="RichTextLabel" parent="Main/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 0.823529, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_5m4u7")
+bbcode_enabled = true
+text = "[font_size=70][wave amp=50.0 freq=5.0 connected=10]=Cabinet 1-1 Paused="
+fit_content = true
+autowrap_mode = 0
+
+[node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ContinueButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../ResetCabinetButton")
+text = "Continue"
+script = ExtResource("2_rtkkj")
+
+[node name="ResetCabinetButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+text = "Reset Cabinet"
+script = ExtResource("2_rtkkj")
+
+[node name="OptionsButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ResetCabinetButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+text = "Options"
+script = ExtResource("2_rtkkj")
+
+[node name="CreditsButton" type="Button" parent="Main/VBoxContainer/CenterContainer2/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../OptionsButton")
+text = "Quit"
+script = ExtResource("2_rtkkj")

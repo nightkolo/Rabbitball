@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd281h6vr0tvt"]
+
+[ext_resource type="Texture2D" uid="uid://gkgioqarr4n8" path="res://assets/world/platform-texture-w1-r2.png" id="1_negmj"]
+
+[node name="SemiBG" type="Polygon2D"]
+self_modulate = Color(0.60915, 0.60951, 0.38922, 1)
+z_index = -3
+texture = ExtResource("1_negmj")
+texture_scale = Vector2(2, 2)
+metadata/_edit_lock_ = true

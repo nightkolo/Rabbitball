@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://coevwv8s0wli5"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_7u1xi"]
+[ext_resource type="Script" path="res://menus/interactors/menu_options.gd" id="1_dkloh"]
+[ext_resource type="Script" path="res://menus/animators/anim_option_button.gd" id="2_smxgj"]
+[ext_resource type="FontVariation" uid="uid://bfrw4r3sgtqui" path="res://resources/theme/font_variation_back_to_title.tres" id="3_ogs5p"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="5_of26n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe4vb"]
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(3, 3)
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource("1_dkloh")
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7u1xi")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_fe4vb")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer"]
+layout_mode = 2
+
+[node name="SoundButton" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["OptionButton", "UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../DynamicCameraButton")
+text = "Sounds: ON"
+script = ExtResource("2_smxgj")
+
+[node name="DynamicCameraButton" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["OptionButton", "UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SoundButton")
+text = "Dynamic Camera: ON"
+script = ExtResource("2_smxgj")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 2
+
+[node name="BackButton" type="Button" parent="Main/VBoxContainer2" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../../CenterContainer/VBoxContainer/SoundButton")
+theme_override_fonts/font = ExtResource("3_ogs5p")
+text = "Back to
+Title"
+script = ExtResource("5_of26n")

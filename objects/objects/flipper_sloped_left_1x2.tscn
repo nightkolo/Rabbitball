@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdnmxhbcvicmf"]
+
+[ext_resource type="Script" path="res://objects/scripts/flipper_movement.gd" id="1_pe7p0"]
+[ext_resource type="Texture2D" uid="uid://di72ol74rc30h" path="res://assets/objects/flipper-slopeddown-sloped-left-1x2.png" id="2_twlcv"]
+[ext_resource type="PackedScene" uid="uid://df543wl0lrnur" path="res://objects/world/flipper_pointer.tscn" id="3_ykfgp"]
+
+[node name="FlipperMover" type="AnimatableBody2D"]
+script = ExtResource("1_pe7p0")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_twlcv")
+centered = false
+offset = Vector2(-6, -6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 48, 12, 48, 48, 0, 96)
+one_way_collision = true
+
+[node name="FlipperPointer" parent="." instance=ExtResource("3_ykfgp")]
+position = Vector2(24, 24)

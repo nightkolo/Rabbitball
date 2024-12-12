@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvl42eoi825ec"]
+
+[ext_resource type="PackedScene" uid="uid://clh146vle03l2" path="res://objects/game/ui_cam.tscn" id="1_asrjn"]
+[ext_resource type="Script" path="res://menus/interactors/main_menus_scene.gd" id="1_yq2y3"]
+[ext_resource type="Texture2D" uid="uid://p64ynw8ebn3k" path="res://assets/backgrounds/bg-r1.png" id="2_1rqml"]
+[ext_resource type="PackedScene" uid="uid://dn6k65rm0d464" path="res://menus/menu_title.tscn" id="4_tehgg"]
+[ext_resource type="PackedScene" uid="uid://cp23nlsnthudx" path="res://menus/menu_cabinet_select.tscn" id="6_tyyxv"]
+[ext_resource type="PackedScene" uid="uid://coevwv8s0wli5" path="res://menus/menu_options.tscn" id="7_akgc4"]
+[ext_resource type="PackedScene" uid="uid://dbkns60yggv3b" path="res://objects/world/platform-texture-w1.tscn" id="8_4p54b"]
+[ext_resource type="PackedScene" uid="uid://bvs30h51ic6nc" path="res://objects/world/platform-texture-a2.tscn" id="9_3ksej"]
+
+[node name="MainMenus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yq2y3")
+
+[node name="UICam" parent="." instance=ExtResource("1_asrjn")]
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color(0.7, 0.7, 0.8, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1rqml")
+expand_mode = 1
+
+[node name="CredBG" type="TextureRect" parent="."]
+self_modulate = Color(0.692711, 0.694403, 0.431412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -900.0
+offset_right = -900.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1rqml")
+expand_mode = 1
+
+[node name="CabSelectBG" type="TextureRect" parent="."]
+self_modulate = Color(0.692711, 0.694403, 0.431412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1rqml")
+expand_mode = 1
+
+[node name="OptionsBG" type="TextureRect" parent="."]
+self_modulate = Color(0.692711, 0.694403, 0.431412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 900.0
+offset_right = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1rqml")
+expand_mode = 1
+
+[node name="MenuTitle" parent="." instance=ExtResource("4_tehgg")]
+
+[node name="MenuCabinetSelect" parent="." instance=ExtResource("6_tyyxv")]
+visible = false
+
+[node name="OptionsMenu" parent="." groups=["MenuScreen"] instance=ExtResource("7_akgc4")]
+visible = false
+
+[node name="Texture" parent="." instance=ExtResource("8_4p54b")]
+position = Vector2(0, 720)
+polygon = PackedVector2Array(0, 0, 912, 0, 912, 384, 0, 384)
+
+[node name="Texture2" parent="." instance=ExtResource("9_3ksej")]
+position = Vector2(0, 720)
+polygon = PackedVector2Array(0, 384, 912, 384, 912, 720, 0, 720)

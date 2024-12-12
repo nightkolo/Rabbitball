@@ -1,0 +1,2 @@
+class_name Platform
+extends StaticBody2D

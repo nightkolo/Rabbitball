@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://clh146vle03l2"]
+
+[node name="UICam" type="Camera2D"]
+anchor_mode = 0

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbatic8x78k41"]
+
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_obeng"]
+[ext_resource type="Texture2D" uid="uid://p64ynw8ebn3k" path="res://assets/backgrounds/bg-r1.png" id="2_gh8h6"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/thank_you_screen.gd" id="2_pa7ig"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_yd48r"]
+
+[node name="ThankYouScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_obeng")
+script = ExtResource("2_pa7ig")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(1, 0.686275, 0.686275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gh8h6")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "End of Demo,
+Thank you for Playtesting!
+-Kolo"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back to Title"
+script = ExtResource("2_yd48r")

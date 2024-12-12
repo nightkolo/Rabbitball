@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://brt0stkwe1vwx"]
+
+[ext_resource type="Script" path="res://objects/scripts/obj_switch.gd" id="1_a048r"]
+[ext_resource type="Texture2D" uid="uid://p0c6cmki6ved" path="res://assets/objects/button-base-1x1.png" id="2_e1xxx"]
+[ext_resource type="Texture2D" uid="uid://djqn5p7descyd" path="res://assets/objects/button-head-1x1.png" id="3_cdoum"]
+[ext_resource type="AudioStream" uid="uid://dpqg60bki6oik" path="res://audio/sfx/switch_hit.ogg" id="4_ypt4l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejaom"]
+radius = 16.0
+height = 40.0
+
+[node name="Switch" type="Area2D"]
+collision_layer = 8
+collision_mask = 48
+script = ExtResource("1_a048r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ejaom")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(1, -6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cdoum")
+offset = Vector2(0, -24)
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_e1xxx")
+
+[node name="AudioHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ypt4l")
+volume_db = -21.645
+bus = &"GameSound"

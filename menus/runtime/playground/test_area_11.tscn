@@ -1,0 +1,238 @@
+[gd_scene load_steps=19 format=3 uid="uid://bu1qxvl35jje4"]
+
+[ext_resource type="Script" path="res://objects/deco/test-trail.gd" id="1_gv0dc"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/test_area_11.gd" id="1_qh1on"]
+[ext_resource type="Texture2D" uid="uid://p64ynw8ebn3k" path="res://assets/backgrounds/bg-r1.png" id="2_7rg2u"]
+[ext_resource type="Texture2D" uid="uid://cnvhaimk3bdnc" path="res://assets/interface/rabbitstar.png" id="4_ltasr"]
+[ext_resource type="Texture2D" uid="uid://dnc74s43lb64n" path="res://assets/objects/flipper-rotator-scissor-3x3.png" id="9_6j2ub"]
+[ext_resource type="PackedScene" uid="uid://bh7q842qhtwqs" path="res://objects/objects/obj_door_1x2.tscn" id="10_6aooa"]
+[ext_resource type="Texture2D" uid="uid://cuwd2aykhk7dg" path="res://assets/objects/launcher-head-r1.png" id="10_vuj36"]
+[ext_resource type="Texture2D" uid="uid://dxegfbxy3l16n" path="res://assets/objects/launcher-spring-grey-1x1.png" id="12_w85nv"]
+[ext_resource type="PackedScene" uid="uid://d0w6k4f8fpi0r" path="res://objects/objects/obj_bumper_2x2.tscn" id="17_m5lel"]
+[ext_resource type="PackedScene" uid="uid://dupwcjoc87acb" path="res://objects/objects/obj_bumper_15x15.tscn" id="18_bw01i"]
+
+[sub_resource type="Curve" id="Curve_k75gi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_s1a7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Launcher-spring-1x1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Launcher-head2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -96), Vector2(0, -121)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Launcher-head2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oywhg"]
+resource_name = "rest"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Launcher-spring-1x1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(1, 0.4), Vector2(1, 1.35), Vector2(1, 0.67), Vector2(1, 1.166), Vector2(1, 0.834), Vector2(1, 1.084), Vector2(1, 0.916), Vector2(1, 1.042), Vector2(1, 0.958), Vector2(1, 1.022), Vector2(1, 0.98), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Launcher-head2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(0, -63), Vector2(0, -142), Vector2(0, -94), Vector2(0, -137), Vector2(0, -105), Vector2(0, -129), Vector2(0, -113), Vector2(0, -125), Vector2(0, -117), Vector2(0, -123), Vector2(0, -119), Vector2(0, -121)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Launcher-head2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.3, 0.5, 0.666667),
+"transitions": PackedFloat32Array(-2.7, -2.7, -2.7, -2.7, -2.7, -2.7),
+"update": 0,
+"values": [Vector2(1.2, 1), Vector2(0.8, 1.2), Vector2(1.1, 0.95), Vector2(0.9, 1.05), Vector2(1.05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0iaxw"]
+_data = {
+"RESET": SubResource("Animation_s1a7j"),
+"rest": SubResource("Animation_oywhg")
+}
+
+[sub_resource type="Animation" id="Animation_50y0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flipper-rotator-scissor-3x3-r3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1oohv"]
+resource_name = "hold"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flipper-rotator-scissor-3x3-r3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1.5, 1.5, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [0.0, 1.5708, 1.39626, 1.52716, 1.4399]
+}
+
+[sub_resource type="Animation" id="Animation_spebq"]
+resource_name = "rest"
+length = 0.5667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flipper-rotator-scissor-3x3-r3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.333333, 0.433333, 0.466667, 0.5, 0.533333, 0.5667),
+"transitions": PackedFloat32Array(1, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [1.48353, 0.0, 0.139626, 0.0, 0.0698132, 0.0, 0.0349066, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6yyfo"]
+_data = {
+"RESET": SubResource("Animation_50y0u"),
+"hold": SubResource("Animation_1oohv"),
+"rest": SubResource("Animation_spebq")
+}
+
+[node name="TC" type="Node2D"]
+script = ExtResource("1_qh1on")
+anim_scale = 0.1
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0.501407, 0.501406, 0.501406, 1)
+z_index = -10
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7rg2u")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Trail" type="Line2D" parent="."]
+top_level = true
+width = 20.0
+width_curve = SubResource("Curve_k75gi")
+default_color = Color(1, 1, 1, 0.5)
+script = ExtResource("1_gv0dc")
+
+[node name="Launcher" type="Node2D" parent="."]
+position = Vector2(525, 521)
+
+[node name="Launcher-spring-1x1" type="Sprite2D" parent="Launcher"]
+position = Vector2(0, -24)
+texture = ExtResource("12_w85nv")
+offset = Vector2(0, -48)
+
+[node name="Launcher-head2" type="Sprite2D" parent="Launcher"]
+z_index = 1
+position = Vector2(0, -96)
+texture = ExtResource("10_vuj36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Launcher"]
+libraries = {
+"": SubResource("AnimationLibrary_0iaxw")
+}
+
+[node name="Launcher2" type="Node2D" parent="."]
+position = Vector2(659, 520)
+
+[node name="Launcher-spring-1x1" type="Sprite2D" parent="Launcher2"]
+position = Vector2(0, -24)
+texture = ExtResource("12_w85nv")
+offset = Vector2(0, -48)
+
+[node name="Launcher-head2" type="Sprite2D" parent="Launcher2"]
+z_index = 1
+position = Vector2(0, -96)
+texture = ExtResource("10_vuj36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Launcher2"]
+libraries = {
+"": SubResource("AnimationLibrary_0iaxw")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(684, 189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ltasr")
+offset = Vector2(0, -120)
+
+[node name="Bumper" parent="." instance=ExtResource("17_m5lel")]
+position = Vector2(191, 186)
+
+[node name="Bumper2" parent="." instance=ExtResource("18_bw01i")]
+position = Vector2(335, 186)
+
+[node name="FlipperScissor" type="Node2D" parent="."]
+
+[node name="Flipper-rotator-scissor-3x3-r3" type="Sprite2D" parent="FlipperScissor"]
+self_modulate = Color(1, 0.5, 0.5, 1)
+position = Vector2(290, 402)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6j2ub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlipperScissor"]
+libraries = {
+"": SubResource("AnimationLibrary_6yyfo")
+}
+
+[node name="Door" parent="." instance=ExtResource("10_6aooa")]
+position = Vector2(111, 331)

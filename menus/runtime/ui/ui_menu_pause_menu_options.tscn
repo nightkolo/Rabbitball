@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvcmt2jp4whdt"]
+
+[ext_resource type="Script" path="res://menus/runtime/ui/interactor/ui_menu_pause_menu_options.gd" id="1_fgsfh"]
+[ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_mu7no"]
+[ext_resource type="Script" path="res://menus/animators/anim_option_button.gd" id="3_8iw3u"]
+[ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="4_ery3t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe4vb"]
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(3, 3)
+
+[node name="MenuPauseMenuOptions" type="CanvasLayer"]
+editor_description = "Bad scene file name lol"
+script = ExtResource("1_fgsfh")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35)
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mu7no")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_fe4vb")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer"]
+layout_mode = 2
+
+[node name="SoundButton" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../DynamicCameraButton")
+text = "Sounds: ON"
+script = ExtResource("3_8iw3u")
+
+[node name="DynamicCameraButton" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SoundButton")
+focus_neighbor_bottom = NodePath("../DynamicCameraButton2")
+text = "Dynamic Camera: ON"
+script = ExtResource("3_8iw3u")
+
+[node name="DynamicCameraButton2" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../DynamicCameraButton")
+focus_neighbor_bottom = NodePath("../DynamicCameraButton3")
+text = "Placeholder Option"
+script = ExtResource("3_8iw3u")
+
+[node name="DynamicCameraButton3" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../DynamicCameraButton2")
+focus_neighbor_bottom = NodePath("../DynamicCameraButton4")
+text = "Placeholder Option"
+script = ExtResource("3_8iw3u")
+
+[node name="DynamicCameraButton4" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../DynamicCameraButton3")
+text = "Placeholder Option"
+script = ExtResource("3_8iw3u")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BackButton" type="Button" parent="Main/VBoxContainer2" groups=["UIButtons"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../../CenterContainer/VBoxContainer/SoundButton")
+text = "Back"
+script = ExtResource("4_ery3t")

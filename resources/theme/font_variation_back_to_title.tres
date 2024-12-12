@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bfrw4r3sgtqui"]
+
+[ext_resource type="FontFile" uid="uid://cf3vhsrhm5kao" path="res://assets/addons/fonts/Rabbitfont-Black.ttf" id="1_32fqt"]
+
+[resource]
+base_font = ExtResource("1_32fqt")
+spacing_top = -7
+spacing_bottom = -7

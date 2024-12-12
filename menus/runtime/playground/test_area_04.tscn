@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://bykwe7pjs0qkt"]
+
+[ext_resource type="PackedScene" uid="uid://d0w6k4f8fpi0r" path="res://objects/objects/obj_bumper_2x2.tscn" id="1_gdguv"]
+[ext_resource type="Script" path="res://menus/runtime/playground/code/test_area_04.gd" id="1_kxb3j"]
+[ext_resource type="PackedScene" uid="uid://dupwcjoc87acb" path="res://objects/objects/obj_bumper_15x15.tscn" id="2_yy4lb"]
+[ext_resource type="PackedScene" uid="uid://cijy2u31gwru" path="res://objects/world/bg-a1.tscn" id="3_qqiuj"]
+[ext_resource type="Texture2D" uid="uid://cnvhaimk3bdnc" path="res://assets/interface/rabbitstar.png" id="4_ljdkb"]
+[ext_resource type="Texture2D" uid="uid://b5byo65so5a4e" path="res://assets/objects/flipper-ro-1x5-r2.png" id="6_tp8cw"]
+[ext_resource type="PackedScene" uid="uid://brt0stkwe1vwx" path="res://objects/objects/obj_switch.tscn" id="7_rx0lf"]
+[ext_resource type="Texture2D" uid="uid://d56bqt122mt2" path="res://assets/objects/flipper-slopeddown-1x2.png" id="8_6qbsk"]
+[ext_resource type="Texture2D" uid="uid://cuismbvmgmxb6" path="res://assets/objects/flipper-sloped-2x1.png" id="9_5nf4b"]
+[ext_resource type="Texture2D" uid="uid://c0hfijsvitlx7" path="res://assets/objects/flipper-sloped-2x05-short.png" id="10_ih7e5"]
+[ext_resource type="Texture2D" uid="uid://dqunx1om082w3" path="res://assets/objects/flipper-sloped-2x05.png" id="11_2v443"]
+[ext_resource type="Texture2D" uid="uid://bx0at4jv0kn1u" path="res://assets/objects/rabbitball-r2.png" id="12_pskf4"]
+[ext_resource type="PackedScene" uid="uid://bh7q842qhtwqs" path="res://objects/objects/obj_door_1x2.tscn" id="13_ei01k"]
+[ext_resource type="Texture2D" uid="uid://ottwxjwkd8tu" path="res://assets/objects/flipper-block-2x1.png" id="14_dutsq"]
+
+[node name="TW" type="Node2D"]
+script = ExtResource("1_kxb3j")
+
+[node name="Bumper" parent="." instance=ExtResource("1_gdguv")]
+position = Vector2(192, 192)
+
+[node name="Bumper2" parent="." instance=ExtResource("2_yy4lb")]
+position = Vector2(336, 192)
+
+[node name="BG" parent="." instance=ExtResource("3_qqiuj")]
+self_modulate = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(450, 360)
+zoom = Vector2(1.25, 1.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(624, 192)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ljdkb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(240, 432)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_tp8cw")
+
+[node name="Switch" parent="." instance=ExtResource("7_rx0lf")]
+position = Vector2(576, 432)
+
+[node name="Door" parent="." instance=ExtResource("13_ei01k")]
+position = Vector2(384, 336)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(170.5, 530.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_6qbsk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(269, 533)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_5nf4b")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(413, 533)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_ih7e5")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(557, 533)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_2v443")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(144, 336)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_pskf4")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.686275, 1)
+position = Vector2(576, 336)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_dutsq")

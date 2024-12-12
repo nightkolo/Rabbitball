@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs43edabl4355"]
+
+[ext_resource type="Script" path="res://menus/runtime/ui/misc/interator/dev_ui.gd" id="1_qlpgm"]
+[ext_resource type="LabelSettings" uid="uid://dl8070pqlkalw" path="res://resources/theme/label_dev_ui.tres" id="2_12c87"]
+
+[node name="DevUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_qlpgm")
+
+[node name="Main" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="FPS Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FPS: "
+label_settings = ExtResource("2_12c87")
+
+[node name="deltaTime Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "deltaTime: "
+label_settings = ExtResource("2_12c87")
+
+[node name="T_FLIP_A Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "T_FLIP_A: "
+label_settings = ExtResource("2_12c87")
+
+[node name="T_FLIP_B Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "T_FLIP_B: "
+label_settings = ExtResource("2_12c87")
+
+[node name="flipper_A_movers_onscreen Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "flipper_A_movers_onscreen: "
+label_settings = ExtResource("2_12c87")
+
+[node name="flipper_B_movers_onscreen Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "flipper_B_movers_onscreen: "
+label_settings = ExtResource("2_12c87")
+
+[node name="flipper_A_blocks_onscreen Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "flipper_A_blocks_onscreen: "
+label_settings = ExtResource("2_12c87")
+
+[node name="flipper_B_blocks_onscreen Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "flipper_B_blocks_onscreen: "
+label_settings = ExtResource("2_12c87")
+
+[node name="current_cab_coord Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "current_cab_coord: "
+label_settings = ExtResource("2_12c87")
+
+[node name="LEVEL_NAME Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LEVEL_NAME: "
+label_settings = ExtResource("2_12c87")
+
+[node name="ARCADE_ID Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ARCADE_ID:"
+label_settings = ExtResource("2_12c87")
+
+[node name="LEVEL_ID Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LEVEL_ID:"
+label_settings = ExtResource("2_12c87")
+
+[node name="CABINET_ID Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CABINET_ID: "
+label_settings = ExtResource("2_12c87")
+
+[node name="MENU_ID Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MENU_ID: "
+label_settings = ExtResource("2_12c87")
+
+[node name="auto_spawn_rb Label" type="Label" parent="Main/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "auto_spawn_rb: "
+label_settings = ExtResource("2_12c87")
