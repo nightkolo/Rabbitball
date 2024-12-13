@@ -21,6 +21,9 @@ enum GameMenus {START = 0, TITLE = 1, CABINET_SELECT = 2, OPTIONS = 3, CREDITS =
 
 @onready var SFX_BUS_ID: int = AudioServer.get_bus_index("SFX")
 
+var game_current_version: String = ProjectSettings.get_setting("application/config/version")
+var game_current_version_text: String = ("v" + ProjectSettings.get_setting("application/config/version")).trim_suffix(".0")
+
 var hello_from_the_cabinet_select_screen: bool = false
 var auto_spawn_rabbitball: bool = true
 var current_spawnpoint: Spawnpoint

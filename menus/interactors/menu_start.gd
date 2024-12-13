@@ -1,10 +1,13 @@
 extends Control
 
 @onready var start_btn: Button = %StartButton
+@onready var ver_label: Label = %VerLabel
 
 
 func _ready() -> void:
 	start_btn.grab_focus()
+	
+	ver_label.text = UIMgr.game_current_version_text
 	
 	start_btn.pressed.connect(start_game)
 

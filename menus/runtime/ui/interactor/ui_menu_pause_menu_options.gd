@@ -19,14 +19,14 @@ func _ready() -> void:
 	
 	if _ui_display:
 		_ui_display.pause_menu_menu_changed.connect(func(is_menu: UIDisplay.PauseMenuMenus):
-				match is_menu:
+			match is_menu:
+				
+				UIDisplay.PauseMenuMenus.MAIN:
+					show_menu(false)
 					
-					UIDisplay.PauseMenuMenus.MAIN:
-						show_menu(false)
-						
-					UIDisplay.PauseMenuMenus.OPTIONS:
-						show_menu(true)
-				)
+				UIDisplay.PauseMenuMenus.OPTIONS:
+					show_menu(true)
+			)
 	
 	sound_btn.pressed.connect(func():
 		var setting := UIMgr.get_game_audio_muted_setting()

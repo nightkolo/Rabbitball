@@ -44,18 +44,17 @@ func _ready() -> void:
 
 func anim_bounce() -> void:
 	if (_sprite && _sprite_shadow):
-		var mult := 0.9
-		var dur := 1.0 * mult
-		var delay := dur / 13.33
+		var dur := 1.5
+		var delay := dur / 23.33
 		
-		_sprite.scale = Vector2(0.25,0.25)
-		_sprite_shadow.scale = Vector2(0.1,0.1)
+		_sprite.scale = Vector2(0.05,0.05)
+		_sprite_shadow.scale = Vector2(0.05,0.05)
 		
 		if _anim:
-			_anim.play("bounce", -1, 1.5)
+			_anim.play("bounce", -1, 1.05)
 		if _tween:
 			_tween.kill()
-		_tween = get_tree().create_tween().set_parallel()
+		_tween = get_tree().create_tween().set_parallel(true)
 		_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		_tween.tween_property(_sprite, "scale:x", 0.5, dur)
 		_tween.tween_property(_sprite_shadow, "scale:y", 0.5, dur)

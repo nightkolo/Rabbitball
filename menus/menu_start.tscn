@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvgnw81dx0c4v"]
+[gd_scene load_steps=10 format=3 uid="uid://bvgnw81dx0c4v"]
 
 [ext_resource type="Theme" uid="uid://bgcumokllmdyh" path="res://resources/theme/theme_menus.tres" id="1_3ncw4"]
 [ext_resource type="Script" path="res://menus/animators/anim_button.gd" id="2_jps72"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5uclaqxwx1rk" path="res://objects/game/intro_platform_left.tscn" id="4_1wgfv"]
 [ext_resource type="PackedScene" uid="uid://dexj8n3wovydc" path="res://objects/game/intro_platform_right.tscn" id="5_bqb4w"]
 [ext_resource type="FontVariation" uid="uid://cuau3etyjayj1" path="res://resources/theme/font_variation_game_title.tres" id="6_2dvn5"]
-[ext_resource type="Texture2D" uid="uid://c620jwt34yjqn" path="res://assets/interface/logo-beta-small.png" id="7_lctie"]
 
 [sub_resource type="FontVariation" id="FontVariation_r6fpm"]
 spacing_top = -3
@@ -77,13 +76,15 @@ text = "[font_size=100][wave amp=50.0 freq=5.0 connected=10] Rabbitball "
 fit_content = true
 autowrap_mode = 0
 
-[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-visible = false
-self_modulate = Color(1, 1, 0.8, 1)
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.75)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("7_lctie")
-stretch_mode = 2
+text = "Press Enter"
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -106,6 +107,7 @@ text = "2024 ©
 Night Kolo"
 
 [node name="VerLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.751)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -113,7 +115,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_fonts/font = SubResource("FontVariation_r6fpm")
 theme_override_font_sizes/font_size = 24
-text = "v1.1"
+text = "v"
 
 [node name="VersionInfoLabel" type="Label" parent="MarginContainer"]
 visible = false

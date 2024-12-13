@@ -66,37 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../SoundButton")
-focus_neighbor_bottom = NodePath("../DynamicCameraButton2")
 text = "Dynamic Camera: ON"
-script = ExtResource("3_8iw3u")
-
-[node name="DynamicCameraButton2" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../DynamicCameraButton")
-focus_neighbor_bottom = NodePath("../DynamicCameraButton3")
-text = "Placeholder Option"
-script = ExtResource("3_8iw3u")
-
-[node name="DynamicCameraButton3" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../DynamicCameraButton2")
-focus_neighbor_bottom = NodePath("../DynamicCameraButton4")
-text = "Placeholder Option"
-script = ExtResource("3_8iw3u")
-
-[node name="DynamicCameraButton4" type="Button" parent="Main/CenterContainer/VBoxContainer" groups=["UIButtons"]]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../DynamicCameraButton3")
-text = "Placeholder Option"
 script = ExtResource("3_8iw3u")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Main"]

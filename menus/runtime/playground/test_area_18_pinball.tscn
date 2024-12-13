@@ -22,7 +22,7 @@ size = Vector2(106, 20)
 [node name="Cabinet" type="Node2D"]
 
 [node name="ScrollBG" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.65, 1)
+self_modulate = Color(0.64, 0.64, 0.416, 1)
 z_index = -998
 texture = ExtResource("1_ayty2")
 centered = false

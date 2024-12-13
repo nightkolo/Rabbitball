@@ -54,14 +54,9 @@ func _ready() -> void:
 			_sprite = get_node_or_null("Head")
 			_colli = get_node_or_null("CollisionShape2D")
 			
-			var rotated_to: float = 1.4 * abs(rotate_degrees_to)
-			var wobble_limit := 30.0
-			var wobble: float
-			
-			if rotated_to > wobble_limit:
-				wobble = wobble_limit
-			else:
-				wobble = rotated_to
+			var rotated_to: float = 2.0 * rotate_degrees_to * -1.0
+			var wobble_limit := 60.0
+			var wobble: float = min(wobble_limit, rotated_to)
 			
 			flipper_reached_end.connect(func():
 				anim_balance_wobble(-wobble)
@@ -158,12 +153,14 @@ func play_rotator_sound(is_held: bool) -> void:
 
 func anim_balance_wobble(offset: float) -> void:
 	if (_sprite && get_rotator_type() == RotatorType.BALANCE):
+		var dur := 2.25
+		
 		if _tween:
 			_tween.kill()
 		_tween = create_tween()
 		_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		_tween.tween_property(_sprite,"skew",deg_to_rad(offset),0.1)
-		_tween.tween_property(_sprite,"skew",0.0,2.0).set_trans(Tween.TRANS_ELASTIC)
+		_tween.tween_property(_sprite,"skew",deg_to_rad(offset),dur/10.0)
+		_tween.tween_property(_sprite,"skew",0.0,dur).set_trans(Tween.TRANS_ELASTIC)
 
 
 func _rotate() -> void:

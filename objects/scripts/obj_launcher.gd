@@ -1,6 +1,6 @@
 ## Use object/instance: [url]res://objects/objects/obj_launcher.tscn[/url]
 ##
-## Probably the most advanced script... for some reason.
+## This is probably the most advanced script...
 class_name Launcher
 extends Node2D
 
@@ -12,6 +12,8 @@ signal has_fully_charged()
 @export var launch_power: float = 520.0:
 	get:
 		return 2.0 * launch_power
+	set(value):
+		launch_power = value
 @export var buffer_input_time: float = 0.1
 @export_group("Assets")
 @export var idle_sprite: Texture2D = preload("res://assets/objects/launcher-pointer-01.png")
@@ -30,7 +32,6 @@ signal has_fully_charged()
 @onready var audio_release_full: AudioStreamPlayer = $Audio/ReleaseFull
 @onready var audio_release: AudioStreamPlayer = $Audio/Release
 
-
 ## @deprecated
 var fully_charged_launch_power: float = 0.0:
 	get:
@@ -46,7 +47,7 @@ var power: float
 
 var _hold_timer: Timer = Timer.new()
 var _buffer_input_timer: Timer = Timer.new()
-var _tween: Tween
+var _tween_fully_charged: Tween
 var _original_pos: float
 var _move_to: float
 var _is_locked_in: bool
@@ -146,10 +147,10 @@ func hold_or_release(input_hold: bool) -> void:
 
 
 func launch(p_strength: float) -> void:
-	#var dir := Vector2(direction.y, direction.x)
 	if audio_charge_up.playing:
 		audio_charge_up.stop()
-		
+	
+	
 	if p_strength > 0.75:
 		audio_release_full.play()
 	else:
@@ -157,8 +158,11 @@ func launch(p_strength: float) -> void:
 	
 	anim.play("launch_full")
 	
+	if _tween_fully_charged:
+		_tween_fully_charged.kill()
+	
 	pointer.texture = idle_sprite
-	#ball_in_launcher_area.stop_start_no_limit(1.0)
+	pointer.scale = Vector2.ONE
 	
 	if ball_in_launcher_area is Rabbitball:
 		(ball_in_launcher_area as Rabbitball).anim_launcher_trail()
@@ -166,13 +170,24 @@ func launch(p_strength: float) -> void:
 		(ball_in_launcher_area as Bunnyball).stop_start_no_limit(1.0)
 		(ball_in_launcher_area as Bunnyball).anim_launcher_trail()
 	
-	#if (p_strength == 1.0 && fully_charged_launch_power_added()):
-		#power = dir * -fully_charged_launch_power
-	#else:
 	power = launch_power * p_strength
 	
 	RuntimeMgr.launcher_launched.emit()
-	#push_area.launch(power)
+
+
+func anim_fully_charged() -> void:
+	var dur := 1.2
+	
+	pointer.scale = Vector2.ZERO
+	pointer.texture = fully_charged_sprite
+	pointer.rotation = deg_to_rad(135.0 * sign(randf_range(-1.0, 1.0)))
+	
+	if _tween_fully_charged:
+		_tween_fully_charged.kill()
+	_tween_fully_charged = create_tween().set_parallel(true)
+	_tween_fully_charged.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	_tween_fully_charged.tween_property(pointer,"scale",Vector2.ONE*1.4,dur)
+	_tween_fully_charged.tween_property(pointer,"rotation",0.0,dur/1.25)
 
 
 func ball_is_on_launcher() -> bool:
@@ -187,7 +202,7 @@ func ball_is_on_launcher() -> bool:
 	return value
 
 
-## deprecated
+## @deprecated
 func fully_charged_launch_power_added() -> bool: # Ehh?
 	return fully_charged_launch_power != 0.0
 
@@ -223,16 +238,6 @@ func _state() -> void:
 func _process(delta: float) -> void:
 	_state()
 	_move(delta)
-
-
-func anim_fully_charged() -> void:
-	pointer.scale = Vector2.ZERO
-	pointer.texture = fully_charged_sprite
-	if _tween:
-		_tween.kill()
-	_tween = create_tween()
-	_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	_tween.tween_property(pointer, "scale", Vector2.ONE, 1.0)
 
 
 func emit_particles() -> void:

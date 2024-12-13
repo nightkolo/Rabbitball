@@ -10,10 +10,13 @@ signal credits_btn_pressed()
 @onready var options_btn: Button = %OptionsButton
 @onready var select_cab_btn: Button = %SelectCabinetButton
 @onready var cred_btn: Button = %CreditsButton
+@onready var ver_label: Label = %VerLabel
 
 
 func _ready() -> void:
 	start_btn.call_deferred("grab_focus") # It works, but why??
+	
+	ver_label.text = UIMgr.game_current_version_text
 	
 	is_showing.connect(func():
 		start_btn.grab_focus()

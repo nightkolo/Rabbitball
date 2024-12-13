@@ -90,8 +90,8 @@ size = Vector2(96, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2dmp"]
 
 [sub_resource type="FontVariation" id="FontVariation_uxlio"]
-spacing_top = -4
-spacing_bottom = -3
+spacing_top = -5
+spacing_bottom = -4
 
 [sub_resource type="LabelSettings" id="LabelSettings_nlg5g"]
 font_size = 22
@@ -852,9 +852,9 @@ color = Color(0.54902, 0.54902, 0.337255, 1)
 [node name="Label" type="Label" parent="C6/ColorRect"]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 10.0
+offset_top = 14.0
 offset_right = 219.0
-offset_bottom = 91.0
+offset_bottom = 95.0
 theme_override_fonts/font = SubResource("FontVariation_uxlio")
 text = "Press
 [R] to Reset Cabinet

@@ -3,6 +3,7 @@ extends CanvasLayer
 
 signal game_pause_toggled(is_paused: bool)
 signal pause_menu_menu_changed(is_menu: PauseMenuMenus)
+## Menu menu? menu menu; menu menu menu! Menu menu.
 
 enum PauseMenuMenus {MAIN = 0, OPTIONS = 1}
 
