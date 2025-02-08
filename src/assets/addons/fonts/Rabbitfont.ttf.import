@@ -2,19 +2,20 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cf3vhsrhm5kao"
-path="res://.godot/imported/Rabbitfont-Black.ttf-440c20c77ccb415a184d68d29eb060cd.fontdata"
+uid="uid://bqrkbv8xym86s"
+path="res://.godot/imported/Rabbitfont.ttf-5674a2236369c41133d4af53087477ff.fontdata"
 
 [deps]
 
-source_file="res://assets/addons/fonts/Rabbitfont-Black.ttf"
-dest_files=["res://.godot/imported/Rabbitfont-Black.ttf-440c20c77ccb415a184d68d29eb060cd.fontdata"]
+source_file="res://assets/addons/fonts/Rabbitfont.ttf"
+dest_files=["res://.godot/imported/Rabbitfont.ttf-5674a2236369c41133d4af53087477ff.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
