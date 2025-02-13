@@ -15,18 +15,18 @@
   <img src="img/mini-bumper-icon.png" width="40px" height="40px">
 </p>
 
-## Is this game open-source?
+## Changelog
 
-It is moreso [source-available](https://en.wikipedia.org/wiki/Source-available_software), rather than traditionally open-source. Consequently, [not having a license](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#choosing-the-right-license) means by default, I still reserve all the original rights for the game's assets.
-
-Fear not though, I'm A-okay with whatever you wanna do with the source-code! Please feel to free to [look](src/assets/world/are-you-data-mining.png), reuse, fork, or mod the game! as long as it's non-commercial.
+[`main`](https://github.com/nightkolo/Rabbitball/commits/main/) branch is currently early version `1.2.0`. 
 
 ## Import, Run, and Export
 
-Everything is included in the [src](src/) directory/folder.
+Everything is included in the [`src/`](src/) directory/folder.
+
+Import the `src/` directory in the Godot Engine.
 
 WIP.
 
 ## Copyright
 
-*&#169; 2024-2025 Night Kolo, all rights reserved.*
+*&#169; 2024-2025 Night Kolo*
