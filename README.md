@@ -4,6 +4,10 @@
 
 **Source-code** for my physics-based puzzle game inspired by Pinball, about a ball with bunny ears <img src="img/thank-you-for-playing.png" width="25px" height="25px">. Made in [Godot 4.3](https://godotengine.org/).
 
+### License
+
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 ### ***Play the game on***
 
 - [**Newgrounds**](https://www.newgrounds.com/portal/view/952625)
@@ -29,4 +33,4 @@ WIP.
 
 ## Copyright
 
-*&#169; 2024-2025 Night Kolo*
+*&#169; 2024-2025 Night Kolo* 
