@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
-src/.godot/
-src/export/
+rabbitball/.godot/
+rabbitball/export/
 export_presets.cfg
 .DS_Store
