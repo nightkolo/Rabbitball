@@ -21,7 +21,7 @@
 
 ## Changelog
 
-[`main`](https://github.com/nightkolo/Rabbitball/commits/main/) branch is currently early version `1.2.0`. Unfortunely, I made these changes before learning about branching in git, which are deniably perfect for versioning, my bad. You can go back to [cb473ae](https://github.com/nightkolo/Rabbitball/tree/cb473ae135068a603ba0f3163895db5d3a36bfc7) to obtain version `1.1`.
+[`main`](https://github.com/nightkolo/Rabbitball/commits/main/) branch is currently early version `1.2.0`. Unfortunely, I made these changes before learning about branching in git, which are undeniably perfect for versioning, my bad. You can go back to [cb473ae](https://github.com/nightkolo/Rabbitball/tree/cb473ae135068a603ba0f3163895db5d3a36bfc7) to obtain version `1.1`.
 
 ### Proposals/Future
 
